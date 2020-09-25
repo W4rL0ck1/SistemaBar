@@ -1,0 +1,11 @@
+C:\Users\renat\source\repos\Sistema Bar\Sistema Bar\bin\Debug\Sistema Bar.exe.config
+C:\Users\renat\source\repos\Sistema Bar\Sistema Bar\bin\Debug\Sistema Bar.exe
+C:\Users\renat\source\repos\Sistema Bar\Sistema Bar\bin\Debug\Sistema Bar.pdb
+C:\Users\renat\source\repos\Sistema Bar\Sistema Bar\obj\Debug\Sistema Bar.csprojAssemblyReference.cache
+C:\Users\renat\source\repos\Sistema Bar\Sistema Bar\obj\Debug\Sistema_Bar.Properties.Resources.resources
+C:\Users\renat\source\repos\Sistema Bar\Sistema Bar\obj\Debug\Sistema Bar.csproj.GenerateResource.cache
+C:\Users\renat\source\repos\Sistema Bar\Sistema Bar\obj\Debug\Sistema Bar.csproj.CoreCompileInputs.cache
+C:\Users\renat\source\repos\Sistema Bar\Sistema Bar\obj\Debug\Sistema Bar.exe
+C:\Users\renat\source\repos\Sistema Bar\Sistema Bar\obj\Debug\Sistema Bar.pdb
+C:\Users\renat\source\repos\Sistema Bar\Sistema Bar\obj\Debug\Sistema_Bar.FrmCnfrm.resources
+C:\Users\renat\source\repos\Sistema Bar\Sistema Bar\obj\Debug\Sistema_Bar.PagInicial.resources
