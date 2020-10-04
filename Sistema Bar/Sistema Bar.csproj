@@ -48,11 +48,11 @@
   <ItemGroup>
     <Compile Include="IniFile.cs" />
     <Compile Include="Principal.cs" />
-    <Compile Include="FrmCnfrm.cs">
+    <Compile Include="FrmCategoria.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmCnfrm.Designer.cs">
-      <DependentUpon>FrmCnfrm.cs</DependentUpon>
+    <Compile Include="FrmCategoria.Designer.cs">
+      <DependentUpon>FrmCategoria.cs</DependentUpon>
     </Compile>
     <Compile Include="PagInicial.cs">
       <SubType>Form</SubType>
@@ -62,8 +62,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FrmCnfrm.resx">
-      <DependentUpon>FrmCnfrm.cs</DependentUpon>
+    <EmbeddedResource Include="FrmCategoria.resx">
+      <DependentUpon>FrmCategoria.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PagInicial.resx">
       <DependentUpon>PagInicial.cs</DependentUpon>
