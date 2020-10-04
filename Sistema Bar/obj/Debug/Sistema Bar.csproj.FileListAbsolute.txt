@@ -7,5 +7,5 @@ C:\Users\renat\source\repos\Sistema Bar\Sistema Bar\obj\Debug\Sistema Bar.csproj
 C:\Users\renat\source\repos\Sistema Bar\Sistema Bar\obj\Debug\Sistema Bar.csproj.CoreCompileInputs.cache
 C:\Users\renat\source\repos\Sistema Bar\Sistema Bar\obj\Debug\Sistema Bar.exe
 C:\Users\renat\source\repos\Sistema Bar\Sistema Bar\obj\Debug\Sistema Bar.pdb
-C:\Users\renat\source\repos\Sistema Bar\Sistema Bar\obj\Debug\Sistema_Bar.FrmCnfrm.resources
 C:\Users\renat\source\repos\Sistema Bar\Sistema Bar\obj\Debug\Sistema_Bar.PagInicial.resources
+C:\Users\renat\source\repos\Sistema Bar\Sistema Bar\obj\Debug\Sistema_Bar.FrmCategoria.resources
