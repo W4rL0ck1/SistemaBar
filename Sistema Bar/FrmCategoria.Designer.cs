@@ -78,7 +78,7 @@
             // picBoxImageUp
             // 
             this.picBoxImageUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.picBoxImageUp.Location = new System.Drawing.Point(26, 52);
+            this.picBoxImageUp.Location = new System.Drawing.Point(26, 76);
             this.picBoxImageUp.Name = "picBoxImageUp";
             this.picBoxImageUp.Size = new System.Drawing.Size(136, 101);
             this.picBoxImageUp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -121,7 +121,7 @@
             // comboBoxOpcoesCategoria
             // 
             this.comboBoxOpcoesCategoria.FormattingEnabled = true;
-            this.comboBoxOpcoesCategoria.Location = new System.Drawing.Point(15, 170);
+            this.comboBoxOpcoesCategoria.Location = new System.Drawing.Point(15, 183);
             this.comboBoxOpcoesCategoria.Name = "comboBoxOpcoesCategoria";
             this.comboBoxOpcoesCategoria.Size = new System.Drawing.Size(164, 21);
             this.comboBoxOpcoesCategoria.TabIndex = 12;
@@ -160,11 +160,10 @@
             this.comboBoxSlotImg.TabIndex = 16;
             this.comboBoxSlotImg.Text = "Selecionar Imagem";
             this.comboBoxSlotImg.Visible = false;
-            this.comboBoxSlotImg.SelectedIndexChanged += new System.EventHandler(this.comboBoxSlotImg_SelectedIndexChanged);
             // 
             // buttonSubstituirImg
             // 
-            this.buttonSubstituirImg.Location = new System.Drawing.Point(57, 364);
+            this.buttonSubstituirImg.Location = new System.Drawing.Point(57, 383);
             this.buttonSubstituirImg.Name = "buttonSubstituirImg";
             this.buttonSubstituirImg.Size = new System.Drawing.Size(75, 23);
             this.buttonSubstituirImg.TabIndex = 17;

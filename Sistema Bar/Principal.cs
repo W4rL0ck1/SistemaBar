@@ -7,16 +7,39 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.IO;
+using System.Xml;
 
 namespace Sistema_Bar
 {
     class Principal : IniFile
     {
-        public string pasta_imagens1 = ""; public string pasta_imagens2 = ""; public string pasta_imagens3 = "";
-        public Image[] Imgs = new Image[20];
-        public Image[] IconProdutos = new Image[60];
-       
+        #region Variaveis
 
+        public string pasta_imagens1 = ""; public string pasta_imagens2 = ""; public string pasta_imagens3 = "";
+        public Image[] Imgs = new Image[12];
+        public Image[] IconProdutos = new Image[60];
+
+        #endregion
+
+        #region Funcoes
+
+        public long LongRandom(long min, long max, Random rand)
+        {
+            long result = rand.Next((Int32)(min >> 32), (Int32)(max >> 32));
+            result = (result << 32);
+            result = result | (long)rand.Next((Int32)min, (Int32)max);
+            return result;
+        }
+
+        public double GetRandomNumber(double minimum, double maximum)
+        {
+            Random random = new Random();
+            return random.NextDouble() * (maximum - minimum) + minimum;
+        }
+
+        #endregion
+
+        #region Metodos
 
         public void Instaciar_Imagens()
         {
@@ -37,39 +60,12 @@ namespace Sistema_Bar
             IconProdutos[46] = Image.FromFile(pasta_imagens2 + "049-coffee.png"); IconProdutos[47] = Image.FromFile(pasta_imagens2 + "chocolate.png"); IconProdutos[48] = Image.FromFile(pasta_imagens2 + "bolo2.png"); IconProdutos[49] = Image.FromFile(pasta_imagens2 + "taco.png");
         }
 
-        /*public void Alterar_Opcoes(int categoria)
-        {
-            switch (categoria)
-            {
-                case 1:
-                    Console.WriteLine("Case 2");
-                    break;
-                case 2:
-                    Console.WriteLine("Case 2");
-                    break;
-                case 3:
-                    Console.WriteLine("Case 2");
-                    break;
-                case 4:
-                    Console.WriteLine("Case 1");
-                    break;
-                case 5:
-                    Console.WriteLine("Case 2");
-                    break;
-                case 6:
-                    Console.WriteLine("Case 2");
-                    break;
-                case 7:
-                    Console.WriteLine("Case 1");
-                    break;
-                default:
-                    Console.WriteLine("Default case");
-                    break;
-            }
-        }*/
+   
 
         public void GerarIni()
         {
+            #region categorias
+
             //CATEGORIAS
 
             string Chave = "chave";
@@ -127,7 +123,9 @@ namespace Sistema_Bar
             }
 
 
+            #endregion
 
+            #region Produtos
 
 
             //PRODUTOS
@@ -177,6 +175,32 @@ namespace Sistema_Bar
                 }
             }
 
+            //GERAR CÓDIGO PARA OS PRODUTOS
+            for (int i = 1; i <= 8; i++)
+            {
+                for (int y = 1; y <= 24; y++)
+                {
+                    Chave = "Codigo " + y;
+                    MinhaString = Math.Abs(LongRandom(1000000000000, 9999999999152, new Random())).ToString(); 
+                    IniWriteString("Codigo dos Produtos da Categoria " + i, Chave, MinhaString);
+                }
+            }
+
+            //GERAR PREÇO PARA OS PRODUTOS
+            for (int i = 1; i <= 8; i++)
+            {
+                for (int y = 1; y <= 24; y++)
+                {
+                    Chave = "Preco " + y;
+                    MinhaString = (GetRandomNumber(0,10) * 10).ToString("N2");
+                    IniWriteString("Preco dos Produtos da Categoria " + i, Chave, MinhaString);
+                }
+            }
+
+            #endregion
+
+            #region Gerar Padrao Personalizado
+
             //GERAR PRODUTOS PADRÃO DO PROGRAMA
             for (int i = 1;i <=1;i++)
             {
@@ -190,17 +214,21 @@ namespace Sistema_Bar
                 IniWriteString("Nome dos Produtos da Categoria 1", "Nome do Produto 1", "Pastel");
                 IniWriteString("Nome dos Produtos da Categoria 1", "Nome do Produto 2", "Batata Frita");
 
+                IniWriteString("Preco dos Produtos da Categoria 1", "Preco 1", "3,50");
+                IniWriteString("Preco dos Produtos da Categoria 1", "Preco 2", "5,50");
+
                 //Produtos Categoria 2
                 IniWriteString("Produtos Ativados da Categoria 2", "Ativado Item 1", "true");
                 IniWriteString("Produtos Ativados da Categoria 2", "Ativado Item 2", "true");
 
-
                 IniWriteString("Imagem dos Produtos da Categoria 2", "ImagemDoProduto 1", "48");
                 IniWriteString("Imagem dos Produtos da Categoria 2", "ImagemDoProduto 2", "2");
 
-
                 IniWriteString("Nome dos Produtos da Categoria 2", "Nome do Produto 1", "Bolo Avelã");
                 IniWriteString("Nome dos Produtos da Categoria 2", "Nome do Produto 2", "Bolo Laranja");
+
+                IniWriteString("Preco dos Produtos da Categoria 2", "Preco 1", "3,25");
+                IniWriteString("Preco dos Produtos da Categoria 2", "Preco 2", "4,20");
 
 
 
@@ -226,6 +254,13 @@ namespace Sistema_Bar
                 IniWriteString("Nome dos Produtos da Categoria 3", "Nome do Produto 5", "Taco");
                 IniWriteString("Nome dos Produtos da Categoria 3", "Nome do Produto 6", "Sorvete");
 
+                IniWriteString("Preco dos Produtos da Categoria 3", "Preco 1", "5,65");
+                IniWriteString("Preco dos Produtos da Categoria 3", "Preco 2", "7,99");
+                IniWriteString("Preco dos Produtos da Categoria 3", "Preco 3", "4,99");
+                IniWriteString("Preco dos Produtos da Categoria 3", "Preco 4", "19,99");
+                IniWriteString("Preco dos Produtos da Categoria 3", "Preco 5", "11,90");
+                IniWriteString("Preco dos Produtos da Categoria 3", "Preco 6", "5,50");
+
 
 
                 //Produtos Categoria 4
@@ -250,6 +285,13 @@ namespace Sistema_Bar
                 IniWriteString("Nome dos Produtos da Categoria 4", "Nome do Produto 5", "Suco Camp");
                 IniWriteString("Nome dos Produtos da Categoria 4", "Nome do Produto 6", "Leite Itambé");
 
+                IniWriteString("Preco dos Produtos da Categoria 4", "Preco 1", "3,50");
+                IniWriteString("Preco dos Produtos da Categoria 4", "Preco 2", "8,50");
+                IniWriteString("Preco dos Produtos da Categoria 4", "Preco 3", "11,50");
+                IniWriteString("Preco dos Produtos da Categoria 4", "Preco 4", "5,50");
+                IniWriteString("Preco dos Produtos da Categoria 4", "Preco 5", "3,50");
+                IniWriteString("Preco dos Produtos da Categoria 4", "Preco 6", "3,10");
+
                 //Produtos Categoria 5
                 IniWriteString("Produtos Ativados da Categoria 5", "Ativado Item 1", "true");
                 IniWriteString("Produtos Ativados da Categoria 5", "Ativado Item 2", "true");
@@ -272,6 +314,13 @@ namespace Sistema_Bar
                 IniWriteString("Nome dos Produtos da Categoria 5", "Nome do Produto 5", "Sorvete1");
                 IniWriteString("Nome dos Produtos da Categoria 5", "Nome do Produto 6", "Leite Itambé");
 
+                IniWriteString("Preco dos Produtos da Categoria 5", "Preco 1", "5,50");
+                IniWriteString("Preco dos Produtos da Categoria 5", "Preco 2", "4,98");
+                IniWriteString("Preco dos Produtos da Categoria 5", "Preco 3", "1,50");
+                IniWriteString("Preco dos Produtos da Categoria 5", "Preco 4", "3,46");
+                IniWriteString("Preco dos Produtos da Categoria 5", "Preco 5", "3,55");
+                IniWriteString("Preco dos Produtos da Categoria 5", "Preco 6", "3,50");
+
 
                 //Produtos Categoria 6
                 IniWriteString("Produtos Ativados da Categoria 6", "Ativado Item 1", "true");
@@ -283,23 +332,21 @@ namespace Sistema_Bar
 
                 IniWriteString("Nome dos Produtos da Categoria 6", "Nome do Produto 1", "Asa Frango 2kg");
                 IniWriteString("Nome dos Produtos da Categoria 6", "Nome do Produto 2", "Sardinha Lata");
+
+                IniWriteString("Preco dos Produtos da Categoria 6", "Preco 1", "8,78");
+                IniWriteString("Preco dos Produtos da Categoria 6", "Preco 2", "8,11");
+
+                //Produtos Categoria 8
+                for (i = 1; i <= 24; i++)
+                {
+                    MinhaString = i.ToString(); ;
+                    IniWriteBool("Produtos Ativados da Categoria 8", "Ativado Item " + i , true);
+                }
+
+                #endregion
             }
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
 
-
+        #endregion
     }
 }

@@ -15,18 +15,18 @@ namespace Sistema_Bar
         Principal t2 = new Principal();
         IniFile ini1 = new IniFile();
         //PagInicial pag1 = new PagInicial();
-        String imageLocation = "";
-        string NovoItemNmCateg; string NmImgCateg; string PosIni;
+        string NovoItemNmCateg; string NmImgCateg;
         //bool CustomImgVerif = false;
-        int NovoItemImgCateg; int NmSalvarImg; 
+        int NovoItemImgCateg; //int NmSalvarImg; 
         int picboxImage;
         public string pasta_imagens1 = ""; public string pasta_imagens2 = "";
         public Image[] IconProdutos = new Image[50];
         bool[] VerifCustomImg = new bool[11];
         Image ImgAux;
-       
+        
 
-         public void Instaciar_Imagens()
+
+        public void Instaciar_Imagens()
         {
             pasta_imagens2 = Application.StartupPath + @"\images\icones\IconesProdutos\";
             IconProdutos[1] = Image.FromFile(pasta_imagens2 + "batatafrita.png"); IconProdutos[2] = Image.FromFile(pasta_imagens2 + "bolo.png"); IconProdutos[3] = Image.FromFile(pasta_imagens2 + "cachorro quente.png"); IconProdutos[4] = Image.FromFile(pasta_imagens2 + "cafe.png"); IconProdutos[5] = Image.FromFile(pasta_imagens2 + "chocolate.png");
@@ -38,7 +38,7 @@ namespace Sistema_Bar
             IconProdutos[31] = Image.FromFile(pasta_imagens2 + "011-jam.png"); IconProdutos[32] = Image.FromFile(pasta_imagens2 + "022-meat.png"); IconProdutos[33] = Image.FromFile(pasta_imagens2 + "029-sardines.png"); IconProdutos[34] = Image.FromFile(pasta_imagens2 + "035-milk bottle.png"); IconProdutos[35] = Image.FromFile(pasta_imagens2 + "039-snack.png");
             IconProdutos[36] = Image.FromFile(pasta_imagens2 + "015-avocado.png"); IconProdutos[37] = Image.FromFile(pasta_imagens2 + "023-salami.png"); IconProdutos[38] = Image.FromFile(pasta_imagens2 + "032-ketchup.png"); IconProdutos[39] = Image.FromFile(pasta_imagens2 + "036-bread.png"); IconProdutos[40] = Image.FromFile(pasta_imagens2 + "040-mayonnaise.png");
             IconProdutos[41] = Image.FromFile(pasta_imagens2 + "041-juice.png"); IconProdutos[42] = Image.FromFile(pasta_imagens2 + "042-fish.png"); IconProdutos[43] = Image.FromFile(pasta_imagens2 + "043-cheese.png"); IconProdutos[44] = Image.FromFile(pasta_imagens2 + "045-Butter.png"); IconProdutos[45] = Image.FromFile(pasta_imagens2 + "048-yogurt.png");
-            IconProdutos[46] = Image.FromFile(pasta_imagens2 + "049-coffee.png");
+            IconProdutos[46] = Image.FromFile(pasta_imagens2 + "049-coffee.png"); IconProdutos[47] = Image.FromFile(pasta_imagens2 + "chocolate.png"); IconProdutos[48] = Image.FromFile(pasta_imagens2 + "bolo2.png"); IconProdutos[49] = Image.FromFile(pasta_imagens2 + "taco.png");
         } 
 
 
@@ -56,7 +56,7 @@ namespace Sistema_Bar
 
         private void ButtonCancelar_Click(object sender, EventArgs e)
         {
-
+            PagInicial pag1 = new PagInicial();
             labelNomeCategoria1.Visible = false;
             labelCategoria1.Visible = false;
             buttonAltNmCateg.Enabled = false;
@@ -70,10 +70,10 @@ namespace Sistema_Bar
             textBoxResultado.Visible = false;
 
             picBoxImageUp.Image = null;
-            MaximumSize = new System.Drawing.Size(202, 463);
-
+            MaximumSize = new System.Drawing.Size(202, 463);           
+            this.DialogResult = DialogResult.OK;
             this.Hide();
-
+            pag1.Show();
         }
 
         private void ComboBoxCateg_SelectedIndexChanged(object sender, EventArgs e)
@@ -475,52 +475,6 @@ namespace Sistema_Bar
             }
         }
 
-        private void comboBoxSlotImg_SelectedIndexChanged(object sender, EventArgs e)
-        {          
-
-            switch (comboBoxSlotImg.SelectedIndex)
-            {
-                case 0:
-                    NmSalvarImg = 1; //IconProdutos[40] = picBoxImageUp.Image;
-                    PosIni = "Imagem 1";
-                    break;
-                case 1:
-                    NmSalvarImg = 42;
-                    PosIni = "Imagem 2";
-                    break;
-                case 2:
-                    NmSalvarImg = 43;
-                    PosIni = "Imagem 3";
-                    break;
-                case 3:
-                    NmSalvarImg = 44;
-                    PosIni = "Imagem 4";
-                    break;
-                case 4:
-                    NmSalvarImg = 45;
-                    PosIni = "Imagem 5";
-                    break;
-                case 5:
-                    NmSalvarImg = 46;
-                    PosIni = "Imagem 6";
-                    break;
-                case 6:
-                    NmSalvarImg = 47;
-                    PosIni = "Imagem 7";
-                    break;
-                case 7:
-                    NmSalvarImg = 48;
-                    PosIni = "Imagem 8";
-                    break;
-                case 8:
-                    NmSalvarImg = 49;
-                    PosIni = "Imagem 9";
-                    break;
-                
-
-            }
-        }
-
         private void buttonSubstituirImg_Click_1(object sender, EventArgs e)
         {
             ImgAux = picBoxTrocarImagem.Image;
@@ -540,13 +494,11 @@ namespace Sistema_Bar
                 case 0:
                     if (VerifCustomImg[1] == true)
                     {
-                        ImgAux = picBoxTrocarImagem.Image;
                         ini1.IniWriteInt("Imagem Da Categoria dos Produtos", "ImagemDoProduto 1", NovoItemImgCateg);
                         ini1.IniWriteBool("Carregar Icones Customizados", "IconeCustomizado 1", false);
                     }
                     else if (VerifCustomImg[1] == false)
                     {
-                        ImgAux = picBoxTrocarImagem.Image;
                         ini1.IniWriteInt("Imagem Da Categoria dos Produtos", "ImagemDoProduto 1", NovoItemImgCateg);
                     }
                     MessageBox.Show("O icone da Categoria selecionada\n Foi Alterado com Sucesso!\n Atualize a Página!");
@@ -554,13 +506,11 @@ namespace Sistema_Bar
                 case 1:
                     if (VerifCustomImg[2] == true)
                     {
-                        ImgAux = picBoxTrocarImagem.Image;
                         ini1.IniWriteInt("Imagem Da Categoria dos Produtos", "ImagemDoProduto 2", NovoItemImgCateg);
                         ini1.IniWriteBool("Carregar Icones Customizados", "IconeCustomizado 2", false);
                     }
                     else if (VerifCustomImg[2] == false)
                     {
-                        ImgAux = picBoxTrocarImagem.Image;
                         ini1.IniWriteInt("Imagem Da Categoria dos Produtos", "ImagemDoProduto 2", NovoItemImgCateg);
                     }
                     MessageBox.Show("O icone da Categoria selecionada\n Foi Alterado com Sucesso!\n Atualize a Página!");
@@ -569,14 +519,12 @@ namespace Sistema_Bar
                 case 2:
                     if (VerifCustomImg[3] == true)
                     {
-                        ImgAux = picBoxTrocarImagem.Image;
                         ini1.IniWriteInt("Imagem Da Categoria dos Produtos", "ImagemDoProduto 3", NovoItemImgCateg);
                         ini1.IniWriteBool("Carregar Icones Customizados", "IconeCustomizado 3", false);
                     }
 
                     else if (VerifCustomImg[3] == false)
                     {
-                        ImgAux = picBoxTrocarImagem.Image;
                         ini1.IniWriteInt("Imagem Da Categoria dos Produtos", "ImagemDoProduto 3", NovoItemImgCateg);
                     }
                     MessageBox.Show("O icone da Categoria selecionada\n Foi Alterado com Sucesso!\n Atualize a Página!");
@@ -584,13 +532,11 @@ namespace Sistema_Bar
                 case 3:
                     if (VerifCustomImg[4] == true)
                     {
-                        ImgAux = picBoxTrocarImagem.Image;
                         ini1.IniWriteInt("Imagem Da Categoria dos Produtos", "ImagemDoProduto 4", NovoItemImgCateg);
                         ini1.IniWriteBool("Carregar Icones Customizados", "IconeCustomizado 4", false);
                     }
                     else if (VerifCustomImg[4] == false)
                     {
-                        ImgAux = picBoxTrocarImagem.Image;
                         ini1.IniWriteInt("Imagem Da Categoria dos Produtos", "ImagemDoProduto 4", NovoItemImgCateg);
                     }
                     MessageBox.Show("O icone da Categoria selecionada\n Foi Alterado com Sucesso!\n Atualize a Página!");
@@ -598,13 +544,11 @@ namespace Sistema_Bar
                 case 4:
                     if (VerifCustomImg[5] == true)
                     {
-                        ImgAux = picBoxTrocarImagem.Image;
                         ini1.IniWriteInt("Imagem Da Categoria dos Produtos", "ImagemDoProduto 5", NovoItemImgCateg);
                         ini1.IniWriteBool("Carregar Icones Customizados", "IconeCustomizado 5", false);
                     }
                     else if (VerifCustomImg[5] == false)
                     {
-                        ImgAux = picBoxTrocarImagem.Image;
                         ini1.IniWriteInt("Imagem Da Categoria dos Produtos", "ImagemDoProduto 5", NovoItemImgCateg);
                     }
                     MessageBox.Show("O icone da Categoria selecionada\n Foi Alterado com Sucesso!\n Atualize a Página!");
@@ -612,13 +556,11 @@ namespace Sistema_Bar
                 case 5:
                     if (VerifCustomImg[6] == true)
                     {
-                        ImgAux = picBoxTrocarImagem.Image;
                         ini1.IniWriteInt("Imagem Da Categoria dos Produtos", "ImagemDoProduto 6", NovoItemImgCateg);
                         ini1.IniWriteBool("Carregar Icones Customizados", "IconeCustomizado 6", false);
                     }
                     else if (VerifCustomImg[6] == false)
                     {
-                        ImgAux = picBoxTrocarImagem.Image;
                         ini1.IniWriteInt("Imagem Da Categoria dos Produtos", "ImagemDoProduto 6", NovoItemImgCateg);
                     }
                     MessageBox.Show("O icone da Categoria selecionada\n Foi Alterado com Sucesso!\n Atualize a Página!");
@@ -626,13 +568,11 @@ namespace Sistema_Bar
                 case 6:
                     if (VerifCustomImg[7] == true)
                     {
-                        ImgAux = picBoxTrocarImagem.Image;
                         ini1.IniWriteInt("Imagem Da Categoria dos Produtos", "ImagemDoProduto 7", NovoItemImgCateg);
                         ini1.IniWriteBool("Carregar Icones Customizados", "IconeCustomizado 7", false);
                     }
                     else if (VerifCustomImg[8] == false)
                     {
-                        ImgAux = picBoxTrocarImagem.Image;
                         ini1.IniWriteInt("Imagem Da Categoria dos Produtos", "ImagemDoProduto 8", NovoItemImgCateg);
                     }
                     MessageBox.Show("O icone da Categoria selecionada\n Foi Alterado com Sucesso!\n Atualize a Página!");
@@ -640,13 +580,11 @@ namespace Sistema_Bar
                 case 7:
                     if (VerifCustomImg[8] == true)
                     {
-                        ImgAux = picBoxTrocarImagem.Image;
                         ini1.IniWriteInt("Imagem Da Categoria dos Produtos", "ImagemDoProduto 8", NovoItemImgCateg);
                         ini1.IniWriteBool("Carregar Icones Customizados", "IconeCustomizado 8", false);
                     }
                     else if (VerifCustomImg[8] == false)
                     {
-                        ImgAux = picBoxTrocarImagem.Image;
                         ini1.IniWriteInt("Imagem Da Categoria dos Produtos", "ImagemDoProduto 8", NovoItemImgCateg);
                     }
                     MessageBox.Show("O icone da Categoria selecionada\n Foi Alterado com Sucesso!\n Atualize a Página!");
@@ -669,12 +607,11 @@ namespace Sistema_Bar
 
         private void buttonSaveImg_Click(object sender, EventArgs e)
         {
-            ini1.IniWriteString("Caminho Dos Icones Personalizados", PosIni, imageLocation);
+           /*  ini1.IniWriteString("Caminho Dos Icones Personalizados", PosIni, imageLocation);
             //IconProdutos[NmSalvarImg] = Image.FromFile(ini1.IniReadString("Caminho Dos Icones Personalizados", PosIni, ""));
             t2.IconProdutos[NmSalvarImg] = Image.FromFile(imageLocation);
-            MessageBox.Show(imageLocation);
+            MessageBox.Show(imageLocation); */
         }
-
-        
+    
     }
 }

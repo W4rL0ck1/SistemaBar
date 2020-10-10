@@ -59,7 +59,7 @@ namespace Sistema_Bar
     public class IniFile
     {
 
-        private string fileName { set; get; }
+    private string fileName { set; get; }
 
     // Define section e key default para os casos em que não se define
     private string section = Path.GetFileNameWithoutExtension(Application.ExecutablePath);
