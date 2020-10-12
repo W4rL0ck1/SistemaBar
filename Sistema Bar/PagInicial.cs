@@ -1597,10 +1597,15 @@ namespace Sistema_Bar
 
         private void pictureBoxAumentarQuant_Click(object sender, EventArgs e)
         {
-            aux = int.Parse(textBoxQuantidade.Text);
-            textBoxQuantidade.Text = (aux + 1).ToString();
+            if (textBoxQuantidade.Text == "")
+            {
+                quant = 0;
+            }
+            
+            textBoxQuantidade.Text = (quant + 1).ToString();
+            quant = int.Parse(textBoxQuantidade.Text);
 
-            if (aux > 0)
+            if (quant > 0)
             {
                 pictureBoxDiminuirQuant.Enabled = true;
             }
@@ -1608,10 +1613,15 @@ namespace Sistema_Bar
 
         private void pictureBoxDiminuirQuant_Click(object sender, EventArgs e)
         {
-            aux = int.Parse(textBoxQuantidade.Text);
-            textBoxQuantidade.Text = (aux - 1).ToString();
+            if (textBoxQuantidade.Text == "")
+            {
+                quant = 0;
+            }
+            
+            textBoxQuantidade.Text = (quant - 1).ToString();
+            quant = int.Parse(textBoxQuantidade.Text);
 
-            if (aux <= 0)
+            if (quant <= 0)
             {
                 pictureBoxDiminuirQuant.Enabled = false;
             }
@@ -1621,15 +1631,22 @@ namespace Sistema_Bar
         {
             try
             {
-                aux = int.Parse(textBoxQuantidade.Text);
-                if (aux > 0 || aux < 99)
+                quant = int.Parse(textBoxQuantidade.Text);
+                if (quant > 0 || quant < 99)
                 {
-                    quant = aux;
+                    quant = int.Parse(textBoxQuantidade.Text);
                 }
+                if (textBoxQuantidade.Text == "")
+                {
+                    quant = 0;
+                    textBoxQuantidade.Text = quant.ToString();
+                    pictureBoxDiminuirQuant.Enabled = false;
+                }              
+
             }
             catch (Exception)
             {
-                MessageBox.Show("An Error Occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                quant = 0;
             }
 
         }
@@ -1671,8 +1688,9 @@ namespace Sistema_Bar
         {
             pictureBoxFinalizarCompra.BackgroundImage = Image.FromFile(t1.pasta_imagens1 + "ButtonFinalizar.png");
 
-            #endregion
+            
         }
+        #endregion
     }
 }
 

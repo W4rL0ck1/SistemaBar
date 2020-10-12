@@ -147,7 +147,7 @@
             // comboBoxSelecionarImg
             // 
             this.comboBoxSelecionarImg.FormattingEnabled = true;
-            this.comboBoxSelecionarImg.Location = new System.Drawing.Point(15, 241);
+            this.comboBoxSelecionarImg.Location = new System.Drawing.Point(12, 267);
             this.comboBoxSelecionarImg.Name = "comboBoxSelecionarImg";
             this.comboBoxSelecionarImg.Size = new System.Drawing.Size(164, 21);
             this.comboBoxSelecionarImg.TabIndex = 14;
@@ -158,7 +158,7 @@
             // comboBoxSlotImg
             // 
             this.comboBoxSlotImg.FormattingEnabled = true;
-            this.comboBoxSlotImg.Location = new System.Drawing.Point(15, 240);
+            this.comboBoxSlotImg.Location = new System.Drawing.Point(-2, 270);
             this.comboBoxSlotImg.Name = "comboBoxSlotImg";
             this.comboBoxSlotImg.Size = new System.Drawing.Size(164, 21);
             this.comboBoxSlotImg.TabIndex = 16;

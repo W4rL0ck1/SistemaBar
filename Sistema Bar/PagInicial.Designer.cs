@@ -29,9 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PagInicial));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelDireito = new System.Windows.Forms.Panel();
+            this.pictureBoxCancelarCompra = new System.Windows.Forms.PictureBox();
+            this.pictureBoxFinalizarCompra = new System.Windows.Forms.PictureBox();
             this.panel12 = new System.Windows.Forms.Panel();
             this.labelValorTotal = new System.Windows.Forms.Label();
             this.labeltxtValorTotal = new System.Windows.Forms.Label();
@@ -49,10 +51,10 @@
             this.pictureBoxAumentarQuant = new System.Windows.Forms.PictureBox();
             this.labelQuantidade = new System.Windows.Forms.Label();
             this.panelCodigoProduto = new System.Windows.Forms.Panel();
+            this.labelCodigoProduto = new System.Windows.Forms.Label();
             this.textBoxPrecoProduto = new System.Windows.Forms.TextBox();
             this.labelPreco = new System.Windows.Forms.Label();
             this.textBoxCodigoProduto = new System.Windows.Forms.TextBox();
-            this.labelCodigoProduto = new System.Windows.Forms.Label();
             this.panelesquerdo = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -197,10 +199,10 @@
             this.alterarListaDeItensToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairEFecharCaixaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.atualizarArqIniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBoxCancelarCompra = new System.Windows.Forms.PictureBox();
-            this.pictureBoxFinalizarCompra = new System.Windows.Forms.PictureBox();
             this.produtosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panelDireito.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCancelarCompra)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFinalizarCompra)).BeginInit();
             this.panel12.SuspendLayout();
             this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProdutos)).BeginInit();
@@ -281,8 +283,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCaixa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCarrinho)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCancelarCompra)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFinalizarCompra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtosBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -299,6 +299,32 @@
             this.panelDireito.Name = "panelDireito";
             this.panelDireito.Size = new System.Drawing.Size(412, 718);
             this.panelDireito.TabIndex = 9;
+            // 
+            // pictureBoxCancelarCompra
+            // 
+            this.pictureBoxCancelarCompra.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxCancelarCompra.BackgroundImage")));
+            this.pictureBoxCancelarCompra.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBoxCancelarCompra.Location = new System.Drawing.Point(36, 665);
+            this.pictureBoxCancelarCompra.Name = "pictureBoxCancelarCompra";
+            this.pictureBoxCancelarCompra.Size = new System.Drawing.Size(179, 41);
+            this.pictureBoxCancelarCompra.TabIndex = 1;
+            this.pictureBoxCancelarCompra.TabStop = false;
+            this.pictureBoxCancelarCompra.Click += new System.EventHandler(this.pictureBoxCancelarCompra_Click);
+            this.pictureBoxCancelarCompra.MouseLeave += new System.EventHandler(this.pictureBoxCancelarCompra_MouseLeave);
+            this.pictureBoxCancelarCompra.MouseHover += new System.EventHandler(this.pictureBoxCancelarCompra_MouseHover);
+            // 
+            // pictureBoxFinalizarCompra
+            // 
+            this.pictureBoxFinalizarCompra.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxFinalizarCompra.BackgroundImage")));
+            this.pictureBoxFinalizarCompra.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBoxFinalizarCompra.Location = new System.Drawing.Point(227, 665);
+            this.pictureBoxFinalizarCompra.Name = "pictureBoxFinalizarCompra";
+            this.pictureBoxFinalizarCompra.Size = new System.Drawing.Size(179, 41);
+            this.pictureBoxFinalizarCompra.TabIndex = 2;
+            this.pictureBoxFinalizarCompra.TabStop = false;
+            this.pictureBoxFinalizarCompra.Click += new System.EventHandler(this.pictureBoxFinalizarCompra_Click);
+            this.pictureBoxFinalizarCompra.MouseLeave += new System.EventHandler(this.pictureBoxFinalizarCompra_MouseLeave);
+            this.pictureBoxFinalizarCompra.MouseHover += new System.EventHandler(this.pictureBoxFinalizarCompra_MouseHover);
             // 
             // panel12
             // 
@@ -355,16 +381,16 @@
             this.ValorTotal});
             this.dataGridProdutos.Location = new System.Drawing.Point(12, 3);
             this.dataGridProdutos.Name = "dataGridProdutos";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = "1";
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridProdutos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = "1";
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridProdutos.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridProdutos.Size = new System.Drawing.Size(394, 354);
             this.dataGridProdutos.TabIndex = 0;
             this.dataGridProdutos.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridProdutos_CellValueChanged);
@@ -424,12 +450,12 @@
             // 
             // textBoxQuantidade
             // 
+            this.textBoxQuantidade.AccessibleRole = System.Windows.Forms.AccessibleRole.Cursor;
             this.textBoxQuantidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxQuantidade.Location = new System.Drawing.Point(10, 29);
             this.textBoxQuantidade.MaxLength = 99;
-            this.textBoxQuantidade.Multiline = true;
             this.textBoxQuantidade.Name = "textBoxQuantidade";
-            this.textBoxQuantidade.Size = new System.Drawing.Size(193, 41);
+            this.textBoxQuantidade.Size = new System.Drawing.Size(193, 45);
             this.textBoxQuantidade.TabIndex = 2;
             this.textBoxQuantidade.Text = "0";
             this.textBoxQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -486,6 +512,18 @@
             this.panelCodigoProduto.Size = new System.Drawing.Size(394, 80);
             this.panelCodigoProduto.TabIndex = 0;
             // 
+            // labelCodigoProduto
+            // 
+            this.labelCodigoProduto.AutoSize = true;
+            this.labelCodigoProduto.BackColor = System.Drawing.Color.Transparent;
+            this.labelCodigoProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCodigoProduto.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelCodigoProduto.Location = new System.Drawing.Point(17, 5);
+            this.labelCodigoProduto.Name = "labelCodigoProduto";
+            this.labelCodigoProduto.Size = new System.Drawing.Size(232, 24);
+            this.labelCodigoProduto.TabIndex = 3;
+            this.labelCodigoProduto.Text = "CÓDIGO DO PRODUTO";
+            // 
             // textBoxPrecoProduto
             // 
             this.textBoxPrecoProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -520,18 +558,6 @@
             this.textBoxCodigoProduto.TabIndex = 1;
             this.textBoxCodigoProduto.Text = "0000000000000";
             this.textBoxCodigoProduto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelCodigoProduto
-            // 
-            this.labelCodigoProduto.AutoSize = true;
-            this.labelCodigoProduto.BackColor = System.Drawing.Color.Transparent;
-            this.labelCodigoProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCodigoProduto.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelCodigoProduto.Location = new System.Drawing.Point(17, 5);
-            this.labelCodigoProduto.Name = "labelCodigoProduto";
-            this.labelCodigoProduto.Size = new System.Drawing.Size(232, 24);
-            this.labelCodigoProduto.TabIndex = 3;
-            this.labelCodigoProduto.Text = "CÓDIGO DO PRODUTO";
             // 
             // panelesquerdo
             // 
@@ -2165,32 +2191,6 @@
             this.atualizarArqIniToolStripMenuItem.Text = "Atualizar";
             this.atualizarArqIniToolStripMenuItem.Click += new System.EventHandler(this.atualizarArqIniToolStripMenuItem_Click);
             // 
-            // pictureBoxCancelarCompra
-            // 
-            this.pictureBoxCancelarCompra.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxCancelarCompra.BackgroundImage")));
-            this.pictureBoxCancelarCompra.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBoxCancelarCompra.Location = new System.Drawing.Point(36, 665);
-            this.pictureBoxCancelarCompra.Name = "pictureBoxCancelarCompra";
-            this.pictureBoxCancelarCompra.Size = new System.Drawing.Size(179, 41);
-            this.pictureBoxCancelarCompra.TabIndex = 1;
-            this.pictureBoxCancelarCompra.TabStop = false;
-            this.pictureBoxCancelarCompra.Click += new System.EventHandler(this.pictureBoxCancelarCompra_Click);
-            this.pictureBoxCancelarCompra.MouseLeave += new System.EventHandler(this.pictureBoxCancelarCompra_MouseLeave);
-            this.pictureBoxCancelarCompra.MouseHover += new System.EventHandler(this.pictureBoxCancelarCompra_MouseHover);
-            // 
-            // pictureBoxFinalizarCompra
-            // 
-            this.pictureBoxFinalizarCompra.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxFinalizarCompra.BackgroundImage")));
-            this.pictureBoxFinalizarCompra.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBoxFinalizarCompra.Location = new System.Drawing.Point(227, 665);
-            this.pictureBoxFinalizarCompra.Name = "pictureBoxFinalizarCompra";
-            this.pictureBoxFinalizarCompra.Size = new System.Drawing.Size(179, 41);
-            this.pictureBoxFinalizarCompra.TabIndex = 2;
-            this.pictureBoxFinalizarCompra.TabStop = false;
-            this.pictureBoxFinalizarCompra.Click += new System.EventHandler(this.pictureBoxFinalizarCompra_Click);
-            this.pictureBoxFinalizarCompra.MouseLeave += new System.EventHandler(this.pictureBoxFinalizarCompra_MouseLeave);
-            this.pictureBoxFinalizarCompra.MouseHover += new System.EventHandler(this.pictureBoxFinalizarCompra_MouseHover);
-            // 
             // produtosBindingSource
             // 
             this.produtosBindingSource.DataSource = typeof(Sistema_Bar.Produtos);
@@ -2216,6 +2216,8 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PagInicial_FormClosed);
             this.Load += new System.EventHandler(this.PaginaInicial_Load);
             this.panelDireito.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCancelarCompra)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFinalizarCompra)).EndInit();
             this.panel12.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProdutos)).EndInit();
@@ -2300,8 +2302,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCarrinho)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCancelarCompra)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFinalizarCompra)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtosBindingSource)).EndInit();
             this.ResumeLayout(false);
 

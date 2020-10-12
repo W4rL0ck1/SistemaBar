@@ -10,3 +10,15 @@ C:\Users\renat\source\repos\Sistema Bar\Sistema Bar\bin\Debug\Warlock Store Assi
 C:\Users\renat\source\repos\Sistema Bar\Sistema Bar\bin\Debug\Warlock Store Assistant.pdb
 C:\Users\renat\source\repos\Sistema Bar\Sistema Bar\obj\Debug\Warlock Store Assistant.exe
 C:\Users\renat\source\repos\Sistema Bar\Sistema Bar\obj\Debug\Warlock Store Assistant.pdb
+C:\Users\renat\Downloads\SistemaBar-master\SistemaBar-master\Sistema Bar\bin\Debug\Warlock Store Assistant.exe.config
+C:\Users\renat\Downloads\SistemaBar-master\SistemaBar-master\Sistema Bar\bin\Debug\Warlock Store Assistant.exe
+C:\Users\renat\Downloads\SistemaBar-master\SistemaBar-master\Sistema Bar\bin\Debug\Warlock Store Assistant.pdb
+C:\Users\renat\Downloads\SistemaBar-master\SistemaBar-master\Sistema Bar\obj\Debug\Sistema Bar.csprojAssemblyReference.cache
+C:\Users\renat\Downloads\SistemaBar-master\SistemaBar-master\Sistema Bar\obj\Debug\Sistema_Bar.FrmCategoria.resources
+C:\Users\renat\Downloads\SistemaBar-master\SistemaBar-master\Sistema Bar\obj\Debug\Sistema_Bar.FrmProduto.resources
+C:\Users\renat\Downloads\SistemaBar-master\SistemaBar-master\Sistema Bar\obj\Debug\Sistema_Bar.PagInicial.resources
+C:\Users\renat\Downloads\SistemaBar-master\SistemaBar-master\Sistema Bar\obj\Debug\Sistema_Bar.Properties.Resources.resources
+C:\Users\renat\Downloads\SistemaBar-master\SistemaBar-master\Sistema Bar\obj\Debug\Sistema Bar.csproj.GenerateResource.cache
+C:\Users\renat\Downloads\SistemaBar-master\SistemaBar-master\Sistema Bar\obj\Debug\Sistema Bar.csproj.CoreCompileInputs.cache
+C:\Users\renat\Downloads\SistemaBar-master\SistemaBar-master\Sistema Bar\obj\Debug\Warlock Store Assistant.exe
+C:\Users\renat\Downloads\SistemaBar-master\SistemaBar-master\Sistema Bar\obj\Debug\Warlock Store Assistant.pdb
