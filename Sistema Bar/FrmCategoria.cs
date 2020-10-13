@@ -12,6 +12,7 @@ namespace Sistema_Bar
 {
     public partial class FrmCategoria : Form
     {
+        #region Variaveis
         Principal t2 = new Principal();
         IniFile ini1 = new IniFile();
         //PagInicial pag1 = new PagInicial();
@@ -23,9 +24,9 @@ namespace Sistema_Bar
         public Image[] IconProdutos = new Image[50];
         bool[] VerifCustomImg = new bool[11];
         Image ImgAux;
-        
+        #endregion
 
-
+        #region Funcoes
         public void Instaciar_Imagens()
         {
             pasta_imagens2 = Application.StartupPath + @"\images\icones\IconesProdutos\";
@@ -39,8 +40,8 @@ namespace Sistema_Bar
             IconProdutos[36] = Image.FromFile(pasta_imagens2 + "015-avocado.png"); IconProdutos[37] = Image.FromFile(pasta_imagens2 + "023-salami.png"); IconProdutos[38] = Image.FromFile(pasta_imagens2 + "032-ketchup.png"); IconProdutos[39] = Image.FromFile(pasta_imagens2 + "036-bread.png"); IconProdutos[40] = Image.FromFile(pasta_imagens2 + "040-mayonnaise.png");
             IconProdutos[41] = Image.FromFile(pasta_imagens2 + "041-juice.png"); IconProdutos[42] = Image.FromFile(pasta_imagens2 + "042-fish.png"); IconProdutos[43] = Image.FromFile(pasta_imagens2 + "043-cheese.png"); IconProdutos[44] = Image.FromFile(pasta_imagens2 + "045-Butter.png"); IconProdutos[45] = Image.FromFile(pasta_imagens2 + "048-yogurt.png");
             IconProdutos[46] = Image.FromFile(pasta_imagens2 + "049-coffee.png"); IconProdutos[47] = Image.FromFile(pasta_imagens2 + "chocolate.png"); IconProdutos[48] = Image.FromFile(pasta_imagens2 + "bolo2.png"); IconProdutos[49] = Image.FromFile(pasta_imagens2 + "taco.png");
-        } 
-
+        }
+        #endregion
 
         public FrmCategoria()
         {

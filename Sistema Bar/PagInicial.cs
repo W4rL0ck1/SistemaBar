@@ -15,6 +15,7 @@ using System.Xml.Serialization;
 using System.Xml.Schema;
 using System.Runtime.ExceptionServices;
 using System.Reflection;
+using System.Runtime.InteropServices;
 
 namespace Sistema_Bar
 {
@@ -239,9 +240,35 @@ namespace Sistema_Bar
 
         }
 
-        void CarregarImgCustomProdutos()
+        void CarregarImgCustomProdutos(int categoria, int produto)
         {
+            String imageLocation = "";
 
+            {
+                try
+                {
+                    OpenFileDialog dialog = new OpenFileDialog();
+                    dialog.Filter = "jpg files(*.jpg)|*.jpg| PNG files|*.png| All files(*.*)|*.*";
+
+                    if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        imageLocation = dialog.FileName;
+
+                        ini1.IniWriteBool("Carregar Icones Customizados Produtos Categoria " + categoria, "IconeCustomizado " + produto, true);
+                        ini1.IniWriteString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem " + produto, imageLocation);
+
+                        CarregarProdutos(categoria);
+                        MessageBox.Show("O icone do Produto foi alterado com sucesso!");
+                    }
+
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("An Error Occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+            }
         }
 
         void CarregarProdutos(int categoria)
@@ -261,228 +288,493 @@ namespace Sistema_Bar
              * CASO CONTRARIO INSTANCIA O ICONE DO PROPRIO PROGRAMA 
             */
 
-            if (VerifCustomImg[1] == false)
+            #region Verificar se o usuario adicionou um icone personalizado ao produto e carrega-lo
+
+            try
             {
-                aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 1", 0);
-                pictureBoxProduto1.Image = t1.IconProdutos[aux];
+                if (VerifCustomImg[1] == false)
+                {
+                    aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 1", 0);
+                    pictureBoxProduto1.Image = t1.IconProdutos[aux];
+                }
+                else if (VerifCustomImg[1] == true)
+                {
+                    pictureBoxProduto1.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 1", ""));
+                }
             }
-            else if (VerifCustomImg[1] == true)
+            catch (Exception)
             {
-                pictureBoxProduto1.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 1", ""));
+                StrAux = ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 1", "");
+                MessageBox.Show("A imagem Personalizada inserida na categoria " + StrAux.ToUpper() + " não foi encontrada!\n" +
+                    "Favor Selecionar um Icone na lista do programa ou Carregar novamente o icone\n" +
+                    "Caso o erro persista carregar outro icone!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            if (VerifCustomImg[2] == false)
+            try
             {
-                aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 2", 0);
-                pictureBoxProduto2.Image = t1.IconProdutos[aux];
+                if (VerifCustomImg[2] == false)
+                {
+                    aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 2", 0);
+                    pictureBoxProduto2.Image = t1.IconProdutos[aux];
+                }
+                else if (VerifCustomImg[2] == true)
+                {
+                    pictureBoxProduto2.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 2", ""));
+                }
             }
-            else if (VerifCustomImg[2] == true)
+            catch (Exception)
             {
-                pictureBoxProduto1.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 2", ""));
-            }
-
-            if (VerifCustomImg[3] == false)
-            {
-                aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 3", 0);
-                pictureBoxProduto3.Image = t1.IconProdutos[aux];
-            }
-            else if (VerifCustomImg[3] == true)
-            {
-                pictureBoxProduto1.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 3", ""));
-            }
-
-            if (VerifCustomImg[4] == false)
-            {
-                aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 4", 0);
-                pictureBoxProduto4.Image = t1.IconProdutos[aux];
-            }
-            else if (VerifCustomImg[4] == true)
-            {
-                pictureBoxProduto1.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 4", ""));
+                StrAux = ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 1", "");
+                MessageBox.Show("A imagem Personalizada inserida na categoria " + StrAux.ToUpper() + " não foi encontrada!\n" +
+                    "Favor Selecionar um Icone na lista do programa ou Carregar novamente o icone\n" +
+                    "Caso o erro persista carregar outro icone!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            if (VerifCustomImg[5] == false)
+            try
             {
-                aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 5", 0);
-                pictureBoxProduto5.Image = t1.IconProdutos[aux];
+                if (VerifCustomImg[3] == false)
+                {
+                    aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 3", 0);
+                    pictureBoxProduto3.Image = t1.IconProdutos[aux];
+                }
+                else if (VerifCustomImg[3] == true)
+                {
+                    pictureBoxProduto3.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 3", ""));
+                }
             }
-            else if (VerifCustomImg[5] == true)
+            catch (Exception)
             {
-                pictureBoxProduto1.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 5", ""));
+                StrAux = ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 1", "");
+                MessageBox.Show("A imagem Personalizada inserida na categoria " + StrAux.ToUpper() + " não foi encontrada!\n" +
+                    "Favor Selecionar um Icone na lista do programa ou Carregar novamente o icone\n" +
+                    "Caso o erro persista carregar outro icone!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            if (VerifCustomImg[6] == false)
+            try
             {
-                aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 6", 0);
-                pictureBoxProduto6.Image = t1.IconProdutos[aux];
+                if (VerifCustomImg[4] == false)
+                {
+                    aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 4", 0);
+                    pictureBoxProduto4.Image = t1.IconProdutos[aux];
+                }
+                else if (VerifCustomImg[4] == true)
+                {
+                    pictureBoxProduto4.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 4", ""));
+                }
             }
-            else if (VerifCustomImg[6] == true)
+            catch (Exception)
             {
-                pictureBoxProduto1.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 5", ""));
+                StrAux = ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 1", "");
+                MessageBox.Show("A imagem Personalizada inserida na categoria " + StrAux.ToUpper() + " não foi encontrada!\n" +
+                    "Favor Selecionar um Icone na lista do programa ou Carregar novamente o icone\n" +
+                    "Caso o erro persista carregar outro icone!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            if (VerifCustomImg[7] == false)
+            try
             {
-                aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 7", 0);
-                pictureBoxProduto7.Image = t1.IconProdutos[aux];
+                if (VerifCustomImg[5] == false)
+                {
+                    aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 5", 0);
+                    pictureBoxProduto5.Image = t1.IconProdutos[aux];
+                }
+                else if (VerifCustomImg[5] == true)
+                {
+                    pictureBoxProduto5.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 5", ""));
+                }
             }
-            else if (VerifCustomImg[7] == true)
+            catch (Exception)
             {
-                pictureBoxProduto1.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 6", ""));
+                StrAux = ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 1", "");
+                MessageBox.Show("A imagem Personalizada inserida na categoria " + StrAux.ToUpper() + " não foi encontrada!\n" +
+                    "Favor Selecionar um Icone na lista do programa ou Carregar novamente o icone\n" +
+                    "Caso o erro persista carregar outro icone!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (VerifCustomImg[8] == false)
+            try
             {
-                aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 8", 0);
-                pictureBoxProduto8.Image = t1.IconProdutos[aux];
+                if (VerifCustomImg[6] == false)
+                {
+                    aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 6", 0);
+                    pictureBoxProduto6.Image = t1.IconProdutos[aux];
+                }
+                else if (VerifCustomImg[6] == true)
+                {
+                    pictureBoxProduto6.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 5", ""));
+                }
             }
-            else if (VerifCustomImg[8] == true)
+            catch (Exception)
             {
-                pictureBoxProduto1.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 7", ""));
+                StrAux = ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 1", "");
+                MessageBox.Show("A imagem Personalizada inserida na categoria " + StrAux.ToUpper() + " não foi encontrada!\n" +
+                    "Favor Selecionar um Icone na lista do programa ou Carregar novamente o icone\n" +
+                    "Caso o erro persista carregar outro icone!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (VerifCustomImg[9] == false)
+
+            try
             {
-                aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 9", 0);
-                pictureBoxProduto9.Image = t1.IconProdutos[aux];
+                if (VerifCustomImg[7] == false)
+                {
+                    aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 7", 0);
+                    pictureBoxProduto7.Image = t1.IconProdutos[aux];
+                }
+                else if (VerifCustomImg[7] == true)
+                {
+                    pictureBoxProduto7.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 6", ""));
+                }
             }
-            else if (VerifCustomImg[9] == true)
+            catch (Exception)
             {
-                pictureBoxProduto9.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 9", ""));
+                StrAux = ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 1", "");
+                MessageBox.Show("A imagem Personalizada inserida na categoria " + StrAux.ToUpper() + " não foi encontrada!\n" +
+                    "Favor Selecionar um Icone na lista do programa ou Carregar novamente o icone\n" +
+                    "Caso o erro persista carregar outro icone!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (VerifCustomImg[10] == false)
+
+            try
             {
-                aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 10", 0);
-                pictureBoxProduto10.Image = t1.IconProdutos[aux];
+                if (VerifCustomImg[8] == false)
+                {
+                    aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 8", 0);
+                    pictureBoxProduto8.Image = t1.IconProdutos[aux];
+                }
+                else if (VerifCustomImg[8] == true)
+                {
+                    pictureBoxProduto8.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 7", ""));
+                }
             }
-            else if (VerifCustomImg[10] == true)
+            catch (Exception)
             {
-                pictureBoxProduto10.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 10", ""));
+                StrAux = ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 1", "");
+                MessageBox.Show("A imagem Personalizada inserida na categoria " + StrAux.ToUpper() + " não foi encontrada!\n" +
+                    "Favor Selecionar um Icone na lista do programa ou Carregar novamente o icone\n" +
+                    "Caso o erro persista carregar outro icone!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (VerifCustomImg[11] == false)
+
+            try
             {
-                aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 11", 0);
-                pictureBoxProduto11.Image = t1.IconProdutos[aux];
+                if (VerifCustomImg[9] == false)
+                {
+                    aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 9", 0);
+                    pictureBoxProduto9.Image = t1.IconProdutos[aux];
+                }
+                else if (VerifCustomImg[9] == true)
+                {
+                    pictureBoxProduto9.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 9", ""));
+                }
             }
-            else if (VerifCustomImg[11] == true)
+            catch (Exception)
             {
-                pictureBoxProduto11.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 11", ""));
+                StrAux = ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 1", "");
+                MessageBox.Show("A imagem Personalizada inserida na categoria " + StrAux.ToUpper() + " não foi encontrada!\n" +
+                    "Favor Selecionar um Icone na lista do programa ou Carregar novamente o icone\n" +
+                    "Caso o erro persista carregar outro icone!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (VerifCustomImg[12] == false)
+
+            try
             {
-                aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 12", 0);
-                pictureBoxProduto12.Image = t1.IconProdutos[aux];
+                if (VerifCustomImg[10] == false)
+                {
+                    aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 10", 0);
+                    pictureBoxProduto10.Image = t1.IconProdutos[aux];
+                }
+                else if (VerifCustomImg[10] == true)
+                {
+                    pictureBoxProduto10.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 10", ""));
+                }
             }
-            else if (VerifCustomImg[12] == true)
+            catch (Exception)
             {
-                pictureBoxProduto12.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 12", ""));
+                StrAux = ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 1", "");
+                MessageBox.Show("A imagem Personalizada inserida na categoria " + StrAux.ToUpper() + " não foi encontrada!\n" +
+                    "Favor Selecionar um Icone na lista do programa ou Carregar novamente o icone\n" +
+                    "Caso o erro persista carregar outro icone!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (VerifCustomImg[13] == false)
+
+            try
             {
-                aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 13", 0);
-                pictureBoxProduto13.Image = t1.IconProdutos[aux];
+                if (VerifCustomImg[11] == false)
+                {
+                    aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 11", 0);
+                    pictureBoxProduto11.Image = t1.IconProdutos[aux];
+                }
+                else if (VerifCustomImg[11] == true)
+                {
+                    pictureBoxProduto11.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 11", ""));
+                }
             }
-            else if (VerifCustomImg[13] == true)
+            catch (Exception)
             {
-                pictureBoxProduto13.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 13", ""));
+                StrAux = ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 1", "");
+                MessageBox.Show("A imagem Personalizada inserida na categoria " + StrAux.ToUpper() + " não foi encontrada!\n" +
+                    "Favor Selecionar um Icone na lista do programa ou Carregar novamente o icone\n" +
+                    "Caso o erro persista carregar outro icone!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (VerifCustomImg[14] == false)
+
+            try
             {
-                aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 14", 0);
-                pictureBoxProduto14.Image = t1.IconProdutos[aux];
+                if (VerifCustomImg[12] == false)
+                {
+                    aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 12", 0);
+                    pictureBoxProduto12.Image = t1.IconProdutos[aux];
+                }
+                else if (VerifCustomImg[12] == true)
+                {
+                    pictureBoxProduto12.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 12", ""));
+                }
             }
-            else if (VerifCustomImg[14] == true)
+            catch (Exception)
             {
-                pictureBoxProduto14.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 14", ""));
+                StrAux = ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 1", "");
+                MessageBox.Show("A imagem Personalizada inserida na categoria " + StrAux.ToUpper() + " não foi encontrada!\n" +
+                    "Favor Selecionar um Icone na lista do programa ou Carregar novamente o icone\n" +
+                    "Caso o erro persista carregar outro icone!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (VerifCustomImg[15] == false)
+
+            try
             {
-                aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 15", 0);
-                pictureBoxProduto15.Image = t1.IconProdutos[aux];
+                if (VerifCustomImg[13] == false)
+                {
+                    aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 13", 0);
+                    pictureBoxProduto13.Image = t1.IconProdutos[aux];
+                }
+                else if (VerifCustomImg[13] == true)
+                {
+                    pictureBoxProduto13.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 13", ""));
+                }
             }
-            else if (VerifCustomImg[15] == true)
+            catch (Exception)
             {
-                pictureBoxProduto15.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 15", ""));
+                StrAux = ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 1", "");
+                MessageBox.Show("A imagem Personalizada inserida na categoria " + StrAux.ToUpper() + " não foi encontrada!\n" +
+                    "Favor Selecionar um Icone na lista do programa ou Carregar novamente o icone\n" +
+                    "Caso o erro persista carregar outro icone!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (VerifCustomImg[16] == false)
+
+            try
             {
-                aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 16", 0);
-                pictureBoxProduto16.Image = t1.IconProdutos[aux];
+                if (VerifCustomImg[14] == false)
+                {
+                    aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 14", 0);
+                    pictureBoxProduto14.Image = t1.IconProdutos[aux];
+                }
+                else if (VerifCustomImg[14] == true)
+                {
+                    pictureBoxProduto14.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 14", ""));
+                }
             }
-            else if (VerifCustomImg[16] == true)
+            catch (Exception)
             {
-                pictureBoxProduto16.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 16", ""));
+                StrAux = ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 1", "");
+                MessageBox.Show("A imagem Personalizada inserida na categoria " + StrAux.ToUpper() + " não foi encontrada!\n" +
+                    "Favor Selecionar um Icone na lista do programa ou Carregar novamente o icone\n" +
+                    "Caso o erro persista carregar outro icone!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (VerifCustomImg[17] == false)
+
+            try
             {
-                aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 17", 0);
-                pictureBoxProduto17.Image = t1.IconProdutos[aux];
+                if (VerifCustomImg[15] == false)
+                {
+                    aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 15", 0);
+                    pictureBoxProduto15.Image = t1.IconProdutos[aux];
+                }
+                else if (VerifCustomImg[15] == true)
+                {
+                    pictureBoxProduto15.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 15", ""));
+                }
             }
-            else if (VerifCustomImg[17] == true)
+            catch (Exception)
             {
-                pictureBoxProduto17.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 17", ""));
+                StrAux = ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 1", "");
+                MessageBox.Show("A imagem Personalizada inserida na categoria " + StrAux.ToUpper() + " não foi encontrada!\n" +
+                    "Favor Selecionar um Icone na lista do programa ou Carregar novamente o icone\n" +
+                    "Caso o erro persista carregar outro icone!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (VerifCustomImg[18] == false)
+
+            try
             {
-                aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 18", 0);
-                pictureBoxProduto18.Image = t1.IconProdutos[aux];
+                if (VerifCustomImg[16] == false)
+                {
+                    aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 16", 0);
+                    pictureBoxProduto16.Image = t1.IconProdutos[aux];
+                }
+                else if (VerifCustomImg[16] == true)
+                {
+                    pictureBoxProduto16.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 16", ""));
+                }
             }
-            else if (VerifCustomImg[18] == true)
+            catch (Exception)
             {
-                pictureBoxProduto18.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 18", ""));
+                StrAux = ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 1", "");
+                MessageBox.Show("A imagem Personalizada inserida na categoria " + StrAux.ToUpper() + " não foi encontrada!\n" +
+                    "Favor Selecionar um Icone na lista do programa ou Carregar novamente o icone\n" +
+                    "Caso o erro persista carregar outro icone!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (VerifCustomImg[19] == false)
+
+            try
             {
-                aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 19", 0);
-                pictureBoxProduto19.Image = t1.IconProdutos[aux];
+                if (VerifCustomImg[17] == false)
+                {
+                    aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 17", 0);
+                    pictureBoxProduto17.Image = t1.IconProdutos[aux];
+                }
+                else if (VerifCustomImg[17] == true)
+                {
+                    pictureBoxProduto17.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 17", ""));
+                }
             }
-            else if (VerifCustomImg[19] == true)
+            catch (Exception)
             {
-                pictureBoxProduto19.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 19", ""));
+                StrAux = ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 1", "");
+                MessageBox.Show("A imagem Personalizada inserida na categoria " + StrAux.ToUpper() + " não foi encontrada!\n" +
+                    "Favor Selecionar um Icone na lista do programa ou Carregar novamente o icone\n" +
+                    "Caso o erro persista carregar outro icone!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (VerifCustomImg[20] == false)
+
+            try
             {
-                aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 20", 0);
-                pictureBoxProduto20.Image = t1.IconProdutos[aux];
+                if (VerifCustomImg[18] == false)
+                {
+                    aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 18", 0);
+                    pictureBoxProduto18.Image = t1.IconProdutos[aux];
+                }
+                else if (VerifCustomImg[18] == true)
+                {
+                    pictureBoxProduto18.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 18", ""));
+                }
             }
-            else if (VerifCustomImg[20] == true)
+            catch (Exception)
             {
-                pictureBoxProduto20.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 20", ""));
+                StrAux = ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 1", "");
+                MessageBox.Show("A imagem Personalizada inserida na categoria " + StrAux.ToUpper() + " não foi encontrada!\n" +
+                    "Favor Selecionar um Icone na lista do programa ou Carregar novamente o icone\n" +
+                    "Caso o erro persista carregar outro icone!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (VerifCustomImg[21] == false)
+
+            try
             {
-                aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 21", 0);
-                pictureBoxProduto21.Image = t1.IconProdutos[aux];
+                if (VerifCustomImg[19] == false)
+                {
+                    aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 19", 0);
+                    pictureBoxProduto19.Image = t1.IconProdutos[aux];
+                }
+                else if (VerifCustomImg[19] == true)
+                {
+                    pictureBoxProduto19.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 19", ""));
+                }
             }
-            else if (VerifCustomImg[21] == true)
+            catch (Exception)
             {
-                pictureBoxProduto21.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 21", ""));
+                StrAux = ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 1", "");
+                MessageBox.Show("A imagem Personalizada inserida na categoria " + StrAux.ToUpper() + " não foi encontrada!\n" +
+                    "Favor Selecionar um Icone na lista do programa ou Carregar novamente o icone\n" +
+                    "Caso o erro persista carregar outro icone!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (VerifCustomImg[22] == false)
+
+            try
             {
-                aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 22", 0);
-                pictureBoxProduto22.Image = t1.IconProdutos[aux];
+                if (VerifCustomImg[20] == false)
+                {
+                    aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 20", 0);
+                    pictureBoxProduto20.Image = t1.IconProdutos[aux];
+                }
+                else if (VerifCustomImg[20] == true)
+                {
+                    pictureBoxProduto20.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 20", ""));
+                }
             }
-            else if (VerifCustomImg[22] == true)
+            catch (Exception)
             {
-                pictureBoxProduto22.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 22", ""));
+                StrAux = ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 1", "");
+                MessageBox.Show("A imagem Personalizada inserida na categoria " + StrAux.ToUpper() + " não foi encontrada!\n" +
+                    "Favor Selecionar um Icone na lista do programa ou Carregar novamente o icone\n" +
+                    "Caso o erro persista carregar outro icone!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (VerifCustomImg[23] == false)
+
+            try
             {
-                aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 23", 0);
-                pictureBoxProduto23.Image = t1.IconProdutos[aux];
+
+                if (VerifCustomImg[21] == false)
+                {
+                    aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 21", 0);
+                    pictureBoxProduto21.Image = t1.IconProdutos[aux];
+                }
+                else if (VerifCustomImg[21] == true)
+                {
+                    pictureBoxProduto21.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 21", ""));
+                }
             }
-            else if (VerifCustomImg[23] == true)
+            catch (Exception)
             {
-                pictureBoxProduto23.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 23", ""));
+                StrAux = ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 1", "");
+                MessageBox.Show("A imagem Personalizada inserida na categoria " + StrAux.ToUpper() + " não foi encontrada!\n" +
+                    "Favor Selecionar um Icone na lista do programa ou Carregar novamente o icone\n" +
+                    "Caso o erro persista carregar outro icone!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (VerifCustomImg[24] == false)
+
+            try
             {
-                aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 24", 0);
-                pictureBoxProduto24.Image = t1.IconProdutos[aux];
+                if (VerifCustomImg[22] == false)
+                {
+                    aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 22", 0);
+                    pictureBoxProduto22.Image = t1.IconProdutos[aux];
+                }
+                else if (VerifCustomImg[22] == true)
+                {
+                    pictureBoxProduto22.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 22", ""));
+                }
             }
-            else if (VerifCustomImg[24] == true)
+            catch (Exception)
             {
-                pictureBoxProduto24.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 24", ""));
+                StrAux = ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 1", "");
+                MessageBox.Show("A imagem Personalizada inserida na categoria " + StrAux.ToUpper() + " não foi encontrada!\n" +
+                    "Favor Selecionar um Icone na lista do programa ou Carregar novamente o icone\n" +
+                    "Caso o erro persista carregar outro icone!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            try
+            {
+                if (VerifCustomImg[23] == false)
+                {
+                    aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 23", 0);
+                    pictureBoxProduto23.Image = t1.IconProdutos[aux];
+                }
+                else if (VerifCustomImg[23] == true)
+                {
+                    pictureBoxProduto23.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 23", ""));
+                }
+            }
+            catch (Exception)
+            {
+                StrAux = ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 1", "");
+                MessageBox.Show("A imagem Personalizada inserida na categoria " + StrAux.ToUpper() + " não foi encontrada!\n" +
+                    "Favor Selecionar um Icone na lista do programa ou Carregar novamente o icone\n" +
+                    "Caso o erro persista carregar outro icone!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            try
+            {
+                if (VerifCustomImg[24] == false)
+                {
+                    aux = ini1.IniReadInt("Imagem dos Produtos da Categoria " + categoria, "ImagemDoProduto 24", 0);
+                    pictureBoxProduto24.Image = t1.IconProdutos[aux];
+                }
+                else if (VerifCustomImg[24] == true)
+                {
+                    pictureBoxProduto24.Image = Image.FromFile(ini1.IniReadString("Caminho dos Icones Personalizados da Categoria " + categoria, "Imagem 24", ""));
+                }
+            }
+            catch (Exception)
+            {
+                StrAux = ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 1", "");
+                MessageBox.Show("A imagem Personalizada inserida na categoria " + StrAux.ToUpper() + " não foi encontrada!\n" +
+                    "Favor Selecionar um Icone na lista do programa ou Carregar novamente o icone\n" +
+                    "Caso o erro persista carregar outro icone!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+
+            #endregion
+
+            #region carregar nome dos produtos
 
             //CARREGAR NOME DOS PRODUTOS
 
@@ -510,6 +802,10 @@ namespace Sistema_Bar
             labelProduto22.Text = ini1.IniReadString("Nome dos Produtos da Categoria " + categoria, "Nome do Produto 22", "");
             labelProduto23.Text = ini1.IniReadString("Nome dos Produtos da Categoria " + categoria, "Nome do Produto 23", "");
             labelProduto24.Text = ini1.IniReadString("Nome dos Produtos da Categoria " + categoria, "Nome do Produto 24", "");
+
+            #endregion
+
+            #region ativar os produtos se o arquivo ini retornar true
 
             //ATIVAR OS PRODUTOS SE O ARQUIVO INI RETORNAR TRUE
 
@@ -586,6 +882,7 @@ namespace Sistema_Bar
             pictureBoxProduto24.Visible = VerifAtivado[24];
             panelProduto24.Visible = VerifAtivado[24];
 
+            #endregion
         }
 
 
@@ -771,7 +1068,7 @@ namespace Sistema_Bar
                     "Caso o erro persista carregar outro icone!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            for (int i = 1; i <= 1; i++)
+            #region carregar nome dos produtos
             {
 
                 labalCateg1.Text = ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 1", "");
@@ -783,6 +1080,7 @@ namespace Sistema_Bar
                 labalCateg7.Text = ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 7", "");
                 labalCateg8.Text = ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 8", "");
             }
+            #endregion
         }
 
         void CarregarFrmCnfrmCategorias()
@@ -835,15 +1133,18 @@ namespace Sistema_Bar
             this.Hide();
         }
 
-        void LoadXmlHeader()
+        void LoadProdCombobox()
         {
-            /* String strAppDir = Application.ExecutablePath;
-             strAppDir = strAppDir.ToLower().Replace(".exe", ".Xml");
-             xml.GerarXml2();
-
-             DataSet ds = new DataSet();
-             ds.ReadXml(strAppDir);
-             dataGridProdutos.DataSource = ds.Tables[0]; */
+            try
+            {
+                toolStripComboBoxCategoria.Items.AddRange(new object[] { ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 1", ""), ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 2", ""), ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 3", ""), ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 4", ""), ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 5", ""), ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 6", ""), ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 7", ""), ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 8", "") });
+                toolStripComboBoxTrocarCategoria.Items.AddRange(new object[] { ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 1", ""), ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 2", ""), ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 3", ""), ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 4", ""), ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 5", ""), ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 6", ""), ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 7", ""), ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 8", "") });
+            }
+            catch (Exception)
+            {
+                toolStripComboBoxCategoria.Items.AddRange(new object[] { "Categoria 1", "Categoria 2", "Categoria 3 ", "Categoria 4 ", "Cateogira 5 ", "Categoria 6 ", "Categoria 7", "Categoria 8" });
+                toolStripComboBoxTrocarCategoria.Items.AddRange(new object[] { "Categoria 1", "Categoria 2", "Categoria 3 ", "Categoria 4 ", "Cateogira 5 ", "Categoria 6 ", "Categoria 7", "Categoria 8" });
+            }
         }
 
         void LoadXml(int categoria, int produto)
@@ -892,8 +1193,7 @@ namespace Sistema_Bar
             //hover troca imagens
             t1.Instaciar_Imagens();
             CarregarCategorias();
-            xml.GerarXml2();
-            //LoadXmlHeader();  
+            LoadProdCombobox();
         }
 
         #endregion
@@ -1601,7 +1901,7 @@ namespace Sistema_Bar
             {
                 quant = 0;
             }
-            
+
             textBoxQuantidade.Text = (quant + 1).ToString();
             quant = int.Parse(textBoxQuantidade.Text);
 
@@ -1617,7 +1917,7 @@ namespace Sistema_Bar
             {
                 quant = 0;
             }
-            
+
             textBoxQuantidade.Text = (quant - 1).ToString();
             quant = int.Parse(textBoxQuantidade.Text);
 
@@ -1641,7 +1941,7 @@ namespace Sistema_Bar
                     quant = 0;
                     textBoxQuantidade.Text = quant.ToString();
                     pictureBoxDiminuirQuant.Enabled = false;
-                }              
+                }
 
             }
             catch (Exception)
@@ -1688,11 +1988,213 @@ namespace Sistema_Bar
         {
             pictureBoxFinalizarCompra.BackgroundImage = Image.FromFile(t1.pasta_imagens1 + "ButtonFinalizar.png");
 
-            
+
         }
+
         #endregion
+
+
+
+        private void toolStripComboBoxCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            #region Switch categoria
+            switch (toolStripComboBoxCategoria.SelectedIndex)
+            {
+                case 0:
+                    categoria = 1;
+                    toolStripComboBoxProduto.Enabled = true;
+                    toolStripComboBoxProduto.Items.Clear();
+                    for (int i = 1; i <= 24; i++)
+                    {
+                        toolStripComboBoxProduto.Items.Add(ini1.IniReadString("Nome dos Produtos da Categoria 1", "Nome do Produto " + i, ""));
+                    }
+                    break;
+                case 1:
+                    categoria = 2;
+                    toolStripComboBoxProduto.Enabled = true;
+                    toolStripComboBoxProduto.Items.Clear();
+                    for (int i = 1; i <= 24; i++)
+                    {
+                        toolStripComboBoxProduto.Items.Add(ini1.IniReadString("Nome dos Produtos da Categoria 2", "Nome do Produto " + i, ""));
+                    }
+                    break;
+                case 2:
+                    categoria = 3;
+                    toolStripComboBoxProduto.Enabled = true;
+                    toolStripComboBoxProduto.Items.Clear();
+                    for (int i = 1; i <= 24; i++)
+                    {
+                        toolStripComboBoxProduto.Items.Add(ini1.IniReadString("Nome dos Produtos da Categoria 3", "Nome do Produto " + i, ""));
+                    }
+                    break;
+                case 3:
+                    categoria = 4;
+                    toolStripComboBoxProduto.Enabled = true;
+                    toolStripComboBoxProduto.Items.Clear();
+                    for (int i = 1; i <= 24; i++)
+                    {
+                        toolStripComboBoxProduto.Items.Add(ini1.IniReadString("Nome dos Produtos da Categoria 4", "Nome do Produto " + i, ""));
+                    }
+                    break;
+                case 4:
+                    categoria = 5;
+                    toolStripComboBoxProduto.Enabled = true;
+                    toolStripComboBoxProduto.Items.Clear();
+                    for (int i = 1; i <= 24; i++)
+                    {
+                        toolStripComboBoxProduto.Items.Add(ini1.IniReadString("Nome dos Produtos da Categoria 5", "Nome do Produto " + i, ""));
+                    }
+                    break;
+                case 5:
+                    categoria = 6;
+                    toolStripComboBoxProduto.Enabled = true;
+                    toolStripComboBoxProduto.Items.Clear();
+                    for (int i = 1; i <= 24; i++)
+                    {
+                        toolStripComboBoxProduto.Items.Add(ini1.IniReadString("Nome dos Produtos da Categoria 6", "Nome do Produto " + i, ""));
+                    }
+                    break;
+                case 6:
+                    categoria = 7;
+                    toolStripComboBoxProduto.Enabled = true;
+                    toolStripComboBoxProduto.Items.Clear();
+                    for (int i = 1; i <= 24; i++)
+                    {
+                        toolStripComboBoxProduto.Items.Add(ini1.IniReadString("Nome dos Produtos da Categoria 7", "Nome do Produto " + i, ""));
+                    }
+                    break;
+                case 7:
+                    categoria = 8;
+                    toolStripComboBoxProduto.Enabled = true;
+                    toolStripComboBoxProduto.Items.Clear();
+                    for (int i = 1; i <= 24; i++)
+                    {
+                        toolStripComboBoxProduto.Items.Add(ini1.IniReadString("Nome dos Produtos da Categoria 8", "Nome do Produto " + i, ""));
+                    }
+                    break;
+            }
+            #endregion
+        }
+
+        private void toolStripComboBoxProduto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            #region switch produto
+            switch (toolStripComboBoxProduto.SelectedIndex)
+            {
+                case 0:
+                    CarregarImgCustomProdutos(categoria, 1);                   
+                    break;
+                case 1:
+                    CarregarImgCustomProdutos(categoria, 2);
+
+                    break;
+                case 2:
+                    CarregarImgCustomProdutos(categoria, 3);
+                    break;
+                case 3:
+                    CarregarImgCustomProdutos(categoria, 4);
+                    break;
+                case 4:
+                    CarregarImgCustomProdutos(categoria, 5);
+                    break;
+                case 5:
+                    CarregarImgCustomProdutos(categoria, 6);
+                    break;
+                case 6:
+                    CarregarImgCustomProdutos(categoria, 7);
+                    break;
+                case 7:
+                    CarregarImgCustomProdutos(categoria, 8);
+                    break;
+                case 8:
+                    CarregarImgCustomProdutos(categoria, 9);
+                    break;
+                case 9:
+                    CarregarImgCustomProdutos(categoria, 10);
+                    break;
+                case 10:
+                    CarregarImgCustomProdutos(categoria, 11);
+                    break;
+                case 11:
+                    CarregarImgCustomProdutos(categoria, 12);
+                    break;
+                case 12:
+                    CarregarImgCustomProdutos(categoria, 13);
+                    break;
+                case 13:
+                    CarregarImgCustomProdutos(categoria, 14);
+                    break;
+                case 14:
+                    CarregarImgCustomProdutos(categoria, 15);
+                    break;
+                case 15:
+                    CarregarImgCustomProdutos(categoria, 16);
+                    break;
+                case 16:
+                    CarregarImgCustomProdutos(categoria, 17);
+                    break;
+                case 17:
+                    CarregarImgCustomProdutos(categoria, 18);
+                    break;
+                case 18:
+                    CarregarImgCustomProdutos(categoria, 19);
+                    break;
+                case 19:
+                    CarregarImgCustomProdutos(categoria, 20);
+                    break;
+                case 20:
+                    CarregarImgCustomProdutos(categoria, 21);
+                    break;
+                case 21:
+                    CarregarImgCustomProdutos(categoria, 22);
+                    break;
+                case 22:
+                    CarregarImgCustomProdutos(categoria, 23);
+                    break;
+                case 23:
+                    CarregarImgCustomProdutos(categoria, 24);
+                    break;
+            }
+            #endregion
+        }
+
+        private void toolStripComboBoxTrocarCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            #region switch produto
+            switch (toolStripComboBoxTrocarCategoria.SelectedIndex)
+            {
+                case 0:
+                    CarregarImgCustomCategoria(1);
+                    break;
+                case 1:
+                    CarregarImgCustomCategoria(2);
+                    break;
+                case 2:
+                    CarregarImgCustomCategoria(3);
+                    break;
+                case 3:
+                    CarregarImgCustomCategoria(4);
+                    break;
+                case 4:
+                    CarregarImgCustomCategoria(5);
+                    break;
+                case 5:
+                    CarregarImgCustomCategoria(6);
+                    break;
+                case 6:
+                    CarregarImgCustomCategoria(7);
+                    break;
+                case 7:
+                    CarregarImgCustomCategoria(8);
+                    break;
+                case 8:
+                    CarregarImgCustomCategoria(9);
+                    break;
+                    #endregion
+            }
+        }
     }
-}
+}   
 
 /* picBoxOpcao1.BackColor = Color.Transparent;
  picBoxOpcao1.BackColor = Color.DarkGray; */

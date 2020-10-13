@@ -12,6 +12,8 @@ namespace Sistema_Bar
 {
     public partial class FrmProduto : Form
     {
+        #region Variaveis
+
         Principal t2 = new Principal();
         IniFile ini1 = new IniFile();
         //PagInicial pag1 = new PagInicial();
@@ -23,9 +25,9 @@ namespace Sistema_Bar
         public Image[] IconProdutos = new Image[50];
         bool[] VerifCustomImg = new bool[25]; bool[] VerifAtivado = new bool[25];
         Image ImgAux;
-        
+        #endregion
 
-
+        #region Funcoes
         public void Instaciar_Imagens()
         {
             pasta_imagens2 = Application.StartupPath + @"\images\icones\IconesProdutos\";
@@ -39,8 +41,8 @@ namespace Sistema_Bar
             IconProdutos[36] = Image.FromFile(pasta_imagens2 + "015-avocado.png"); IconProdutos[37] = Image.FromFile(pasta_imagens2 + "023-salami.png"); IconProdutos[38] = Image.FromFile(pasta_imagens2 + "032-ketchup.png"); IconProdutos[39] = Image.FromFile(pasta_imagens2 + "036-bread.png"); IconProdutos[40] = Image.FromFile(pasta_imagens2 + "040-mayonnaise.png");
             IconProdutos[41] = Image.FromFile(pasta_imagens2 + "041-juice.png"); IconProdutos[42] = Image.FromFile(pasta_imagens2 + "042-fish.png"); IconProdutos[43] = Image.FromFile(pasta_imagens2 + "043-cheese.png"); IconProdutos[44] = Image.FromFile(pasta_imagens2 + "045-Butter.png"); IconProdutos[45] = Image.FromFile(pasta_imagens2 + "048-yogurt.png");
             IconProdutos[46] = Image.FromFile(pasta_imagens2 + "049-coffee.png"); IconProdutos[47] = Image.FromFile(pasta_imagens2 + "chocolate.png"); IconProdutos[48] = Image.FromFile(pasta_imagens2 + "bolo2.png"); IconProdutos[49] = Image.FromFile(pasta_imagens2 + "taco.png");
-        } 
-
+        }
+        #endregion
 
         public FrmProduto()
         {
@@ -1320,7 +1322,7 @@ namespace Sistema_Bar
                     if (VerifCustomImg[1] == true)
                     {
                         ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto 1", NovoItemImgCateg);
-                        ini1.IniReadBool("Carregar Icones Customizados Produtos Categoria " + NumCategoria, "IconeCustomizado " + 1, false);
+                        ini1.IniWriteBool("Carregar Icones Customizados Produtos Categoria " + NumCategoria, "IconeCustomizado " + 1, false);
                     }
                     else if (VerifCustomImg[1] == false)
                     {
@@ -1328,11 +1330,12 @@ namespace Sistema_Bar
                     }
                     MessageBox.Show("O icone do Produto selecionado\n Foi Alterado com Sucesso!\n Atualize a Página!");
                     break;
+
                 case 1:
                     if (VerifCustomImg[2] == true)
                     {
                         ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 2, NovoItemImgCateg);
-                        ini1.IniReadBool("Carregar Icones Customizados Produtos Categoria " + NumCategoria, "IconeCustomizado " + 2, false);
+                        ini1.IniWriteBool("Carregar Icones Customizados Produtos Categoria " + NumCategoria, "IconeCustomizado " + 2, false);
                     }
                     else if (VerifCustomImg[2] == false)
                     {
@@ -1345,7 +1348,7 @@ namespace Sistema_Bar
                     if (VerifCustomImg[3] == true)
                     {
                         ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 3, NovoItemImgCateg);
-                        ini1.IniReadBool("Carregar Icones Customizados Produtos Categoria " + NumCategoria, "IconeCustomizado " + 3, false);
+                        ini1.IniWriteBool("Carregar Icones Customizados Produtos Categoria " + NumCategoria, "IconeCustomizado " + 3, false);
                     }
 
                     else if (VerifCustomImg[3] == false)
@@ -1354,11 +1357,12 @@ namespace Sistema_Bar
                     }
                     MessageBox.Show("O icone da Categoria selecionada\n Foi Alterado com Sucesso!\n Atualize a Página!");
                     break;
+
                 case 3:
                     if (VerifCustomImg[4] == true)
                     {
                         ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 4, NovoItemImgCateg);
-                        ini1.IniReadBool("Carregar Icones Customizados Produtos Categoria " + NumCategoria, "IconeCustomizado " + 4, false);
+                        ini1.IniWriteBool("Carregar Icones Customizados Produtos Categoria " + NumCategoria, "IconeCustomizado " + 4, false);
                     }
                     else if (VerifCustomImg[4] == false)
                     {
@@ -1366,11 +1370,12 @@ namespace Sistema_Bar
                     }
                     MessageBox.Show("O icone da Categoria selecionada\n Foi Alterado com Sucesso!\n Atualize a Página!");
                     break;
+
                 case 4:
                     if (VerifCustomImg[5] == true)
                     {
                         ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 5, NovoItemImgCateg);
-                        ini1.IniReadBool("Carregar Icones Customizados Produtos Categoria " + NumCategoria, "IconeCustomizado " + 5, false);
+                        ini1.IniWriteBool("Carregar Icones Customizados Produtos Categoria " + NumCategoria, "IconeCustomizado " + 5, false);
                     }
                     else if (VerifCustomImg[5] == false)
                     {
@@ -1378,11 +1383,12 @@ namespace Sistema_Bar
                     }
                     MessageBox.Show("O icone da Categoria selecionada\n Foi Alterado com Sucesso!\n Atualize a Página!");
                     break;
+
                 case 5:
                     if (VerifCustomImg[6] == true)
                     {
                         ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 6, NovoItemImgCateg);
-                        ini1.IniReadBool("Carregar Icones Customizados Produtos Categoria " + NumCategoria, "IconeCustomizado " + 6, false);
+                        ini1.IniWriteBool("Carregar Icones Customizados Produtos Categoria " + NumCategoria, "IconeCustomizado " + 6, false);
                     }
                     else if (VerifCustomImg[6] == false)
                     {
@@ -1390,44 +1396,232 @@ namespace Sistema_Bar
                     }
                     MessageBox.Show("O icone da Categoria selecionada\n Foi Alterado com Sucesso!\n Atualize a Página!");
                     break;
+
                 case 6:
                     if (VerifCustomImg[7] == true)
                     {
                         ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 7, NovoItemImgCateg);
-                        ini1.IniReadBool("Carregar Icones Customizados Produtos Categoria " + NumCategoria, "IconeCustomizado " + 7, false);
+                        ini1.IniWriteBool("Carregar Icones Customizados Produtos Categoria " + NumCategoria, "IconeCustomizado " + 7, false);
                     }
-                    else if (VerifCustomImg[8] == false)
+                    else if (VerifCustomImg[7] == false)
                     {
                         ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 7, NovoItemImgCateg);
                     }
                     MessageBox.Show("O icone da Categoria selecionada\n Foi Alterado com Sucesso!\n Atualize a Página!");
                     break;
+
                 case 7:
                     if (VerifCustomImg[8] == true)
                     {
                         ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 8, NovoItemImgCateg);
-                        ini1.IniReadBool("Carregar Icones Customizados Produtos Categoria " + NumCategoria, "IconeCustomizado " + 8, false);
+                        ini1.IniWriteBool("Carregar Icones Customizados Produtos Categoria " + NumCategoria, "IconeCustomizado " + 8, false);
                     }
                     else if (VerifCustomImg[8] == false)
                     {
                         ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 8, NovoItemImgCateg);
+                    }
+                    MessageBox.Show("O icone da Categoria selecionada\n Foi Alterado com Sucesso!\n Atualize a Página!");
+                    break;
+
+                case 8:
+                    if (VerifCustomImg[9] == true)
+                    {
+                        ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 9, NovoItemImgCateg);
+                        ini1.IniWriteBool("Carregar Icones Customizados Produtos Categoria " + NumCategoria, "IconeCustomizado " + 9, false);
+                    }
+                    else if (VerifCustomImg[9] == false)
+                    {
+                        ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 9, NovoItemImgCateg);
+                    }
+                    MessageBox.Show("O icone da Categoria selecionada\n Foi Alterado com Sucesso!\n Atualize a Página!");
+                    break;
+
+                case 9:
+                    if (VerifCustomImg[10] == true)
+                    {
+                        ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 10, NovoItemImgCateg);
+                        ini1.IniWriteBool("Carregar Icones Customizados Produtos Categoria " + NumCategoria, "IconeCustomizado " + 10, false);
+                    }
+                    else if (VerifCustomImg[10] == false)
+                    {
+                        ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 10, NovoItemImgCateg);
+                    }
+                    MessageBox.Show("O icone da Categoria selecionada\n Foi Alterado com Sucesso!\n Atualize a Página!");
+                    break;
+
+                case 10:
+                    if (VerifCustomImg[11] == true)
+                    {
+                        ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 11, NovoItemImgCateg);
+                        ini1.IniWriteBool("Carregar Icones Customizados Produtos Categoria " + NumCategoria, "IconeCustomizado " + 11, false);
+                    }
+                    else if (VerifCustomImg[11] == false)
+                    {
+                        ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 11, NovoItemImgCateg);
+                    }
+                    MessageBox.Show("O icone da Categoria selecionada\n Foi Alterado com Sucesso!\n Atualize a Página!");
+                    break;
+                case 11:
+                    if (VerifCustomImg[12] == true)
+                    {
+                        ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 12, NovoItemImgCateg);
+                        ini1.IniWriteBool("Carregar Icones Customizados Produtos Categoria " + NumCategoria, "IconeCustomizado " + 12, false);
+                    }
+                    else if (VerifCustomImg[12] == false)
+                    {
+                        ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 12, NovoItemImgCateg);
+                    }
+                    MessageBox.Show("O icone da Categoria selecionada\n Foi Alterado com Sucesso!\n Atualize a Página!");
+                    break;
+                case 12:
+                    if (VerifCustomImg[13] == true)
+                    {
+                        ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 13, NovoItemImgCateg);
+                        ini1.IniWriteBool("Carregar Icones Customizados Produtos Categoria " + NumCategoria, "IconeCustomizado " + 13, false);
+                    }
+                    else if (VerifCustomImg[8] == false)
+                    {
+                        ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 13, NovoItemImgCateg);
+                    }
+                    MessageBox.Show("O icone da Categoria selecionada\n Foi Alterado com Sucesso!\n Atualize a Página!");
+                    break;
+                case 13:
+                    if (VerifCustomImg[14] == true)
+                    {
+                        ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 14, NovoItemImgCateg);
+                        ini1.IniWriteBool("Carregar Icones Customizados Produtos Categoria " + NumCategoria, "IconeCustomizado " + 14, false);
+                    }
+                    else if (VerifCustomImg[14] == false)
+                    {
+                        ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 14, NovoItemImgCateg);
+                    }
+                    MessageBox.Show("O icone da Categoria selecionada\n Foi Alterado com Sucesso!\n Atualize a Página!");
+                    break;
+                case 14:
+                    if (VerifCustomImg[15] == true)
+                    {
+                        ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 15, NovoItemImgCateg);
+                        ini1.IniWriteBool("Carregar Icones Customizados Produtos Categoria " + NumCategoria, "IconeCustomizado " + 15, false);
+                    }
+                    else if (VerifCustomImg[15] == false)
+                    {
+                        ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 15, NovoItemImgCateg);
+                    }
+                    MessageBox.Show("O icone da Categoria selecionada\n Foi Alterado com Sucesso!\n Atualize a Página!");
+                    break;
+
+                case 15:
+                    if (VerifCustomImg[16] == true)
+                    {
+                        ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 16, NovoItemImgCateg);
+                        ini1.IniWriteBool("Carregar Icones Customizados Produtos Categoria " + NumCategoria, "IconeCustomizado " + 16, false);
+                    }
+                    else if (VerifCustomImg[16] == false)
+                    {
+                        ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 16, NovoItemImgCateg);
+                    }
+                    MessageBox.Show("O icone da Categoria selecionada\n Foi Alterado com Sucesso!\n Atualize a Página!");
+                    break;
+
+                case 16:
+                    if (VerifCustomImg[17] == true)
+                    {
+                        ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 17, NovoItemImgCateg);
+                        ini1.IniWriteBool("Carregar Icones Customizados Produtos Categoria " + NumCategoria, "IconeCustomizado " + 17, false);
+                    }
+                    else if (VerifCustomImg[17] == false)
+                    {
+                        ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 17, NovoItemImgCateg);
+                    }
+                    MessageBox.Show("O icone da Categoria selecionada\n Foi Alterado com Sucesso!\n Atualize a Página!");
+                    break;
+                case 17:
+                    if (VerifCustomImg[18] == true)
+                    {
+                        ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 18, NovoItemImgCateg);
+                        ini1.IniWriteBool("Carregar Icones Customizados Produtos Categoria " + NumCategoria, "IconeCustomizado " + 18, false);
+                    }
+                    else if (VerifCustomImg[18] == false)
+                    {
+                        ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 18, NovoItemImgCateg);
+                    }
+                    MessageBox.Show("O icone da Categoria selecionada\n Foi Alterado com Sucesso!\n Atualize a Página!");
+                    break;
+                case 18:
+                    if (VerifCustomImg[19] == true)
+                    {
+                        ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 19, NovoItemImgCateg);
+                        ini1.IniWriteBool("Carregar Icones Customizados Produtos Categoria " + NumCategoria, "IconeCustomizado " + 19, false);
+                    }
+                    else if (VerifCustomImg[19] == false)
+                    {
+                        ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 19, NovoItemImgCateg);
+                    }
+                    MessageBox.Show("O icone da Categoria selecionada\n Foi Alterado com Sucesso!\n Atualize a Página!");
+                    break;
+                case 19:
+                    if (VerifCustomImg[20] == true)
+                    {
+                        ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 20, NovoItemImgCateg);
+                        ini1.IniWriteBool("Carregar Icones Customizados Produtos Categoria " + NumCategoria, "IconeCustomizado " + 20, false);
+                    }
+                    else if (VerifCustomImg[20] == false)
+                    {
+                        ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 20, NovoItemImgCateg);
+                    }
+                    MessageBox.Show("O icone da Categoria selecionada\n Foi Alterado com Sucesso!\n Atualize a Página!");
+                    break;
+                case 20:
+                    if (VerifCustomImg[21] == true)
+                    {
+                        ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 21, NovoItemImgCateg);
+                        ini1.IniWriteBool("Carregar Icones Customizados Produtos Categoria " + NumCategoria, "IconeCustomizado " + 21, false);
+                    }
+                    else if (VerifCustomImg[21] == false)
+                    {
+                        ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 21, NovoItemImgCateg);
+                    }
+                    MessageBox.Show("O icone da Categoria selecionada\n Foi Alterado com Sucesso!\n Atualize a Página!");
+                    break;
+                case 21:
+                    if (VerifCustomImg[22] == true)
+                    {
+                        ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 22, NovoItemImgCateg);
+                        ini1.IniWriteBool("Carregar Icones Customizados Produtos Categoria " + NumCategoria, "IconeCustomizado " + 22, false);
+                    }
+                    else if (VerifCustomImg[22] == false)
+                    {
+                        ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 22, NovoItemImgCateg);
+                    }
+                    MessageBox.Show("O icone da Categoria selecionada\n Foi Alterado com Sucesso!\n Atualize a Página!");
+                    break;
+                case 22:
+                    if (VerifCustomImg[23] == true)
+                    {
+                        ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 23, NovoItemImgCateg);
+                        ini1.IniWriteBool("Carregar Icones Customizados Produtos Categoria " + NumCategoria, "IconeCustomizado " + 23, false);
+                    }
+                    else if (VerifCustomImg[23] == false)
+                    {
+                        ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 23, NovoItemImgCateg);
+                    }
+                    MessageBox.Show("O icone da Categoria selecionada\n Foi Alterado com Sucesso!\n Atualize a Página!");
+                    break;
+                case 23:
+                    if (VerifCustomImg[24] == true)
+                    {
+                        ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 24, NovoItemImgCateg);
+                        ini1.IniWriteBool("Carregar Icones Customizados Produtos Categoria " + NumCategoria, "IconeCustomizado " + 24, false);
+                    }
+                    else if (VerifCustomImg[24] == false)
+                    {
+                        ini1.IniWriteInt("Imagem dos Produtos da Categoria " + NumCategoria, "ImagemDoProduto " + 24, NovoItemImgCateg);
                     }
                     MessageBox.Show("O icone da Categoria selecionada\n Foi Alterado com Sucesso!\n Atualize a Página!");
                     break;
 
             }
         }
-
-       
-
-        private void buttonSaveImg_Click(object sender, EventArgs e)
-        {
-           /* ini1.IniWriteString("Caminho Dos Icones Personalizados", PosIni, imageLocation);
-            //IconProdutos[NmSalvarImg] = Image.FromFile(ini1.IniReadString("Caminho Dos Icones Personalizados", PosIni, ""));
-            t2.IconProdutos[NmSalvarImg] = Image.FromFile(imageLocation);
-            MessageBox.Show(imageLocation); */
-        }
-
       
     }
 }

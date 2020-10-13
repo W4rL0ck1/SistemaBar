@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PagInicial));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelDireito = new System.Windows.Forms.Panel();
             this.pictureBoxCancelarCompra = new System.Windows.Forms.PictureBox();
             this.pictureBoxFinalizarCompra = new System.Windows.Forms.PictureBox();
@@ -166,31 +166,9 @@
             this.carregarOuSalvarArquivoIniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.carregarIconePersonalizadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.categoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuCat1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuCat2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuCat3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuCat4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuCat5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuCat6 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuCat7 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuCat8 = new System.Windows.Forms.ToolStripMenuItem();
             this.produtosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.categoriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.categoria2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.categoria3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.categoria4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.categoria5ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
-            this.categoria6ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
-            this.categoria7ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
-            this.categoria8ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripComboBoxCategoria = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripComboBoxProduto = new System.Windows.Forms.ToolStripComboBox();
             this.históricoDeVendasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.retornarProdutosPadrãoDoProgramaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salvarListaDeItensToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -200,6 +178,7 @@
             this.sairEFecharCaixaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.atualizarArqIniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.produtosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.toolStripComboBoxTrocarCategoria = new System.Windows.Forms.ToolStripComboBox();
             this.panelDireito.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCancelarCompra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFinalizarCompra)).BeginInit();
@@ -381,16 +360,16 @@
             this.ValorTotal});
             this.dataGridProdutos.Location = new System.Drawing.Point(12, 3);
             this.dataGridProdutos.Name = "dataGridProdutos";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = "1";
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridProdutos.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = "1";
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridProdutos.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridProdutos.Size = new System.Drawing.Size(394, 354);
             this.dataGridProdutos.TabIndex = 0;
             this.dataGridProdutos.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridProdutos_CellValueChanged);
@@ -1941,200 +1920,34 @@
             // categoriasToolStripMenuItem
             // 
             this.categoriasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuCat1,
-            this.toolStripMenuCat2,
-            this.toolStripMenuCat3,
-            this.toolStripMenuCat4,
-            this.toolStripMenuCat5,
-            this.toolStripMenuCat6,
-            this.toolStripMenuCat7,
-            this.toolStripMenuCat8});
+            this.toolStripComboBoxTrocarCategoria});
             this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
-            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.categoriasToolStripMenuItem.Text = "Categorias";
-            // 
-            // toolStripMenuCat1
-            // 
-            this.toolStripMenuCat1.Name = "toolStripMenuCat1";
-            this.toolStripMenuCat1.Size = new System.Drawing.Size(80, 22);
-            this.toolStripMenuCat1.Text = "1";
-            this.toolStripMenuCat1.Click += new System.EventHandler(this.toolStripMenuCat1_Click);
-            // 
-            // toolStripMenuCat2
-            // 
-            this.toolStripMenuCat2.Name = "toolStripMenuCat2";
-            this.toolStripMenuCat2.Size = new System.Drawing.Size(80, 22);
-            this.toolStripMenuCat2.Text = "2";
-            this.toolStripMenuCat2.Click += new System.EventHandler(this.toolStripMenuCat2_Click);
-            // 
-            // toolStripMenuCat3
-            // 
-            this.toolStripMenuCat3.Name = "toolStripMenuCat3";
-            this.toolStripMenuCat3.Size = new System.Drawing.Size(80, 22);
-            this.toolStripMenuCat3.Text = "3";
-            this.toolStripMenuCat3.Click += new System.EventHandler(this.toolStripMenuCat3_Click);
-            // 
-            // toolStripMenuCat4
-            // 
-            this.toolStripMenuCat4.Name = "toolStripMenuCat4";
-            this.toolStripMenuCat4.Size = new System.Drawing.Size(80, 22);
-            this.toolStripMenuCat4.Text = "4";
-            this.toolStripMenuCat4.Click += new System.EventHandler(this.toolStripMenuCat4_Click);
-            // 
-            // toolStripMenuCat5
-            // 
-            this.toolStripMenuCat5.Name = "toolStripMenuCat5";
-            this.toolStripMenuCat5.Size = new System.Drawing.Size(80, 22);
-            this.toolStripMenuCat5.Text = "5";
-            this.toolStripMenuCat5.Click += new System.EventHandler(this.toolStripMenuCat5_Click);
-            // 
-            // toolStripMenuCat6
-            // 
-            this.toolStripMenuCat6.Name = "toolStripMenuCat6";
-            this.toolStripMenuCat6.Size = new System.Drawing.Size(80, 22);
-            this.toolStripMenuCat6.Text = "6";
-            this.toolStripMenuCat6.Click += new System.EventHandler(this.toolStripMenuCat6_Click);
-            // 
-            // toolStripMenuCat7
-            // 
-            this.toolStripMenuCat7.Name = "toolStripMenuCat7";
-            this.toolStripMenuCat7.Size = new System.Drawing.Size(80, 22);
-            this.toolStripMenuCat7.Text = "7";
-            this.toolStripMenuCat7.Click += new System.EventHandler(this.toolStripMenuCat7_Click);
-            // 
-            // toolStripMenuCat8
-            // 
-            this.toolStripMenuCat8.Name = "toolStripMenuCat8";
-            this.toolStripMenuCat8.Size = new System.Drawing.Size(80, 22);
-            this.toolStripMenuCat8.Text = "8";
-            this.toolStripMenuCat8.Click += new System.EventHandler(this.toolStripMenuCat8_Click);
             // 
             // produtosToolStripMenuItem
             // 
             this.produtosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.categoriaToolStripMenuItem,
-            this.categoria2ToolStripMenuItem,
-            this.categoria3ToolStripMenuItem,
-            this.categoria4ToolStripMenuItem,
-            this.categoria5ToolStripMenuItem,
-            this.categoria6ToolStripMenuItem,
-            this.categoria7ToolStripMenuItem,
-            this.categoria8ToolStripMenuItem});
+            this.toolStripComboBoxCategoria,
+            this.toolStripComboBoxProduto});
             this.produtosToolStripMenuItem.Name = "produtosToolStripMenuItem";
-            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.produtosToolStripMenuItem.Text = "Produtos";
             // 
-            // categoriaToolStripMenuItem
+            // toolStripComboBoxCategoria
             // 
-            this.categoriaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem2});
-            this.categoriaToolStripMenuItem.Name = "categoriaToolStripMenuItem";
-            this.categoriaToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
-            this.categoriaToolStripMenuItem.Text = "Categoria 1";
+            this.toolStripComboBoxCategoria.Name = "toolStripComboBoxCategoria";
+            this.toolStripComboBoxCategoria.Size = new System.Drawing.Size(121, 23);
+            this.toolStripComboBoxCategoria.Text = "--------------------";
+            this.toolStripComboBoxCategoria.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBoxCategoria_SelectedIndexChanged);
             // 
-            // toolStripMenuItem2
+            // toolStripComboBoxProduto
             // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(80, 22);
-            this.toolStripMenuItem2.Text = "1";
-            // 
-            // categoria2ToolStripMenuItem
-            // 
-            this.categoria2ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem3});
-            this.categoria2ToolStripMenuItem.Name = "categoria2ToolStripMenuItem";
-            this.categoria2ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
-            this.categoria2ToolStripMenuItem.Text = "Categoria 2";
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(80, 22);
-            this.toolStripMenuItem3.Text = "1";
-            // 
-            // categoria3ToolStripMenuItem
-            // 
-            this.categoria3ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem4});
-            this.categoria3ToolStripMenuItem.Name = "categoria3ToolStripMenuItem";
-            this.categoria3ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
-            this.categoria3ToolStripMenuItem.Text = "Categoria 3";
-            // 
-            // toolStripMenuItem4
-            // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(80, 22);
-            this.toolStripMenuItem4.Text = "1";
-            // 
-            // categoria4ToolStripMenuItem
-            // 
-            this.categoria4ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem5});
-            this.categoria4ToolStripMenuItem.Name = "categoria4ToolStripMenuItem";
-            this.categoria4ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
-            this.categoria4ToolStripMenuItem.Text = "Categoria 4";
-            // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(80, 22);
-            this.toolStripMenuItem5.Text = "1";
-            // 
-            // categoria5ToolStripMenuItem
-            // 
-            this.categoria5ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem6});
-            this.categoria5ToolStripMenuItem.Name = "categoria5ToolStripMenuItem";
-            this.categoria5ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
-            this.categoria5ToolStripMenuItem.Text = "Categoria 5";
-            // 
-            // toolStripMenuItem6
-            // 
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(80, 22);
-            this.toolStripMenuItem6.Text = "1";
-            // 
-            // categoria6ToolStripMenuItem
-            // 
-            this.categoria6ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem7});
-            this.categoria6ToolStripMenuItem.Name = "categoria6ToolStripMenuItem";
-            this.categoria6ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
-            this.categoria6ToolStripMenuItem.Text = "Categoria 6";
-            // 
-            // toolStripMenuItem7
-            // 
-            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(80, 22);
-            this.toolStripMenuItem7.Text = "1";
-            // 
-            // categoria7ToolStripMenuItem
-            // 
-            this.categoria7ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem8});
-            this.categoria7ToolStripMenuItem.Name = "categoria7ToolStripMenuItem";
-            this.categoria7ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
-            this.categoria7ToolStripMenuItem.Text = "Categoria 7";
-            // 
-            // toolStripMenuItem8
-            // 
-            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(80, 22);
-            this.toolStripMenuItem8.Text = "1";
-            // 
-            // categoria8ToolStripMenuItem
-            // 
-            this.categoria8ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem9});
-            this.categoria8ToolStripMenuItem.Name = "categoria8ToolStripMenuItem";
-            this.categoria8ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
-            this.categoria8ToolStripMenuItem.Text = "Categoria 8";
-            // 
-            // toolStripMenuItem9
-            // 
-            this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(80, 22);
-            this.toolStripMenuItem9.Text = "1";
+            this.toolStripComboBoxProduto.Enabled = false;
+            this.toolStripComboBoxProduto.Name = "toolStripComboBoxProduto";
+            this.toolStripComboBoxProduto.Size = new System.Drawing.Size(121, 23);
+            this.toolStripComboBoxProduto.Text = "-------------------";
+            this.toolStripComboBoxProduto.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBoxProduto_SelectedIndexChanged);
             // 
             // históricoDeVendasToolStripMenuItem
             // 
@@ -2194,6 +2007,13 @@
             // produtosBindingSource
             // 
             this.produtosBindingSource.DataSource = typeof(Sistema_Bar.Produtos);
+            // 
+            // toolStripComboBoxTrocarCategoria
+            // 
+            this.toolStripComboBoxTrocarCategoria.Name = "toolStripComboBoxTrocarCategoria";
+            this.toolStripComboBoxTrocarCategoria.Size = new System.Drawing.Size(121, 23);
+            this.toolStripComboBoxTrocarCategoria.Text = "----------------------";
+            this.toolStripComboBoxTrocarCategoria.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBoxTrocarCategoria_SelectedIndexChanged);
             // 
             // PagInicial
             // 
@@ -2343,31 +2163,7 @@
         private System.Windows.Forms.Label labalCateg8;
         private System.Windows.Forms.ToolStripMenuItem carregarIconePersonalizadoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem categoriasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuCat1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuCat2;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuCat3;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuCat4;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuCat5;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuCat6;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuCat7;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuCat8;
         private System.Windows.Forms.ToolStripMenuItem produtosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem categoriaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem categoria2ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem categoria3ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
-        private System.Windows.Forms.ToolStripMenuItem categoria4ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
-        private System.Windows.Forms.ToolStripMenuItem categoria5ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
-        private System.Windows.Forms.ToolStripMenuItem categoria6ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
-        private System.Windows.Forms.ToolStripMenuItem categoria7ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
-        private System.Windows.Forms.ToolStripMenuItem categoria8ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
         private System.Windows.Forms.Panel panelProdutos;
         private System.Windows.Forms.PictureBox pictureBoxProduto8;
         private System.Windows.Forms.PictureBox pictureBoxProduto7;
@@ -2477,6 +2273,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ValorTotal;
         private System.Windows.Forms.PictureBox pictureBoxCancelarCompra;
         private System.Windows.Forms.PictureBox pictureBoxFinalizarCompra;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBoxCategoria;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBoxProduto;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBoxTrocarCategoria;
     }
 }
 
