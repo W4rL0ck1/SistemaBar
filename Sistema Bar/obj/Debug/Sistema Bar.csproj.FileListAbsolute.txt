@@ -22,3 +22,4 @@ C:\Users\renat\Downloads\SistemaBar-master\SistemaBar-master\Sistema Bar\obj\Deb
 C:\Users\renat\Downloads\SistemaBar-master\SistemaBar-master\Sistema Bar\obj\Debug\Sistema Bar.csproj.CoreCompileInputs.cache
 C:\Users\renat\Downloads\SistemaBar-master\SistemaBar-master\Sistema Bar\obj\Debug\Warlock Store Assistant.exe
 C:\Users\renat\Downloads\SistemaBar-master\SistemaBar-master\Sistema Bar\obj\Debug\Warlock Store Assistant.pdb
+C:\Users\renat\source\repos\Sistema Bar\Sistema Bar\obj\Debug\Sistema_Bar.FrmProduto2.resources

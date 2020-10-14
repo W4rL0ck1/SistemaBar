@@ -16,6 +16,7 @@ using System.Xml.Schema;
 using System.Runtime.ExceptionServices;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Drawing.Printing;
 
 namespace Sistema_Bar
 {
@@ -28,10 +29,12 @@ namespace Sistema_Bar
         XmlFile xml = new XmlFile();
         FrmCategoria conf = new FrmCategoria();
         FrmProduto prod = new FrmProduto();
+        FrmProduto2 prod2 = new FrmProduto2();
         bool[] VerifCustomImg = new bool[25]; bool[] VerifAtivado = new bool[25];
         int aux; int quant = 0; int categoria; int posicaotabela = 0; int QuantProdutos = 0;
         string StrAux;
         double soma;
+        string teste = "";
         //double ValorUnitario; double auxiliar;
 
         #endregion
@@ -1133,6 +1136,31 @@ namespace Sistema_Bar
             this.Hide();
         }
 
+        void CarregarFrmAlterarProdutos()
+        {
+            prod2.labelNomeProduto1.Visible = true;
+            prod2.buttonCancelar.Visible = true;
+            prod2.comboBoxCategoria.Visible = true;
+            prod2.comboBoxCategoria.Visible = true;
+            prod2.picBoxImageUp.Visible = true;
+            prod2.labelProduto1.Text = "Alterar o nome do Produto: ";
+            prod2.textBoxCodigoBarras.Text = "";
+            prod2.textBoxPreco.Text = "";
+            prod2.comboBoxCategoria.Text = "";
+            prod2.comboBoxCategoria.Items.Clear();
+            prod2.comboBoxOpcoesProduto.Items.Clear();
+            prod2.comboBoxProduto.Items.Clear();
+            prod2.comboBoxCategoria.Items.AddRange(new object[] { ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 1", ""), ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 2", ""), ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 3", ""), ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 4", ""), ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 5", ""), ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 6", ""), ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 7", ""), ini1.IniReadString("Nome da Categoria dos Produtos", "NomeProduto 8", "") });
+            //prod.comboBoxProduto.Items.AddRange(new object[] {ini1.IniReadString("Nome dos Produtos da Categoria 1", "Nome do Produto 1", ""), });
+            prod2.comboBoxOpcoesProduto.Items.AddRange(new object[] { "Alterar Código de Barras", "Alterar Preço" });
+            prod2.MaximumSize = new System.Drawing.Size(202, 352);
+            prod2.Size = new System.Drawing.Size(202, 463);
+            prod2.buttonCancelar.Location = new System.Drawing.Point(57, 309);
+            prod2.picBoxImageUp.Location = new System.Drawing.Point(26, 79);
+            this.Hide();
+            prod2.Show();
+        }
+
         void LoadProdCombobox()
         {
             try
@@ -1194,6 +1222,8 @@ namespace Sistema_Bar
             t1.Instaciar_Imagens();
             CarregarCategorias();
             LoadProdCombobox();
+
+           
         }
 
         #endregion
@@ -1248,7 +1278,7 @@ namespace Sistema_Bar
 
         #endregion
 
-        #region Botoes Canto Superior
+        #region Botoes Parte Superior
 
         private void RetornarProdutosPadrãoDoProgramaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1279,6 +1309,211 @@ namespace Sistema_Bar
         {
             CarregarCategorias();
         }
+
+        private void toolStripComboBoxCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            #region Switch categoria
+            switch (toolStripComboBoxCategoria.SelectedIndex)
+            {
+                case 0:
+                    categoria = 1;
+                    toolStripComboBoxProduto.Enabled = true;
+                    toolStripComboBoxProduto.Items.Clear();
+                    for (int i = 1; i <= 24; i++)
+                    {
+                        toolStripComboBoxProduto.Items.Add(ini1.IniReadString("Nome dos Produtos da Categoria 1", "Nome do Produto " + i, ""));
+                    }
+                    break;
+                case 1:
+                    categoria = 2;
+                    toolStripComboBoxProduto.Enabled = true;
+                    toolStripComboBoxProduto.Items.Clear();
+                    for (int i = 1; i <= 24; i++)
+                    {
+                        toolStripComboBoxProduto.Items.Add(ini1.IniReadString("Nome dos Produtos da Categoria 2", "Nome do Produto " + i, ""));
+                    }
+                    break;
+                case 2:
+                    categoria = 3;
+                    toolStripComboBoxProduto.Enabled = true;
+                    toolStripComboBoxProduto.Items.Clear();
+                    for (int i = 1; i <= 24; i++)
+                    {
+                        toolStripComboBoxProduto.Items.Add(ini1.IniReadString("Nome dos Produtos da Categoria 3", "Nome do Produto " + i, ""));
+                    }
+                    break;
+                case 3:
+                    categoria = 4;
+                    toolStripComboBoxProduto.Enabled = true;
+                    toolStripComboBoxProduto.Items.Clear();
+                    for (int i = 1; i <= 24; i++)
+                    {
+                        toolStripComboBoxProduto.Items.Add(ini1.IniReadString("Nome dos Produtos da Categoria 4", "Nome do Produto " + i, ""));
+                    }
+                    break;
+                case 4:
+                    categoria = 5;
+                    toolStripComboBoxProduto.Enabled = true;
+                    toolStripComboBoxProduto.Items.Clear();
+                    for (int i = 1; i <= 24; i++)
+                    {
+                        toolStripComboBoxProduto.Items.Add(ini1.IniReadString("Nome dos Produtos da Categoria 5", "Nome do Produto " + i, ""));
+                    }
+                    break;
+                case 5:
+                    categoria = 6;
+                    toolStripComboBoxProduto.Enabled = true;
+                    toolStripComboBoxProduto.Items.Clear();
+                    for (int i = 1; i <= 24; i++)
+                    {
+                        toolStripComboBoxProduto.Items.Add(ini1.IniReadString("Nome dos Produtos da Categoria 6", "Nome do Produto " + i, ""));
+                    }
+                    break;
+                case 6:
+                    categoria = 7;
+                    toolStripComboBoxProduto.Enabled = true;
+                    toolStripComboBoxProduto.Items.Clear();
+                    for (int i = 1; i <= 24; i++)
+                    {
+                        toolStripComboBoxProduto.Items.Add(ini1.IniReadString("Nome dos Produtos da Categoria 7", "Nome do Produto " + i, ""));
+                    }
+                    break;
+                case 7:
+                    categoria = 8;
+                    toolStripComboBoxProduto.Enabled = true;
+                    toolStripComboBoxProduto.Items.Clear();
+                    for (int i = 1; i <= 24; i++)
+                    {
+                        toolStripComboBoxProduto.Items.Add(ini1.IniReadString("Nome dos Produtos da Categoria 8", "Nome do Produto " + i, ""));
+                    }
+                    break;
+            }
+            #endregion
+        }
+
+        private void toolStripComboBoxProduto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            #region switch produto
+            switch (toolStripComboBoxProduto.SelectedIndex)
+            {
+                case 0:
+                    CarregarImgCustomProdutos(categoria, 1);
+                    break;
+                case 1:
+                    CarregarImgCustomProdutos(categoria, 2);
+
+                    break;
+                case 2:
+                    CarregarImgCustomProdutos(categoria, 3);
+                    break;
+                case 3:
+                    CarregarImgCustomProdutos(categoria, 4);
+                    break;
+                case 4:
+                    CarregarImgCustomProdutos(categoria, 5);
+                    break;
+                case 5:
+                    CarregarImgCustomProdutos(categoria, 6);
+                    break;
+                case 6:
+                    CarregarImgCustomProdutos(categoria, 7);
+                    break;
+                case 7:
+                    CarregarImgCustomProdutos(categoria, 8);
+                    break;
+                case 8:
+                    CarregarImgCustomProdutos(categoria, 9);
+                    break;
+                case 9:
+                    CarregarImgCustomProdutos(categoria, 10);
+                    break;
+                case 10:
+                    CarregarImgCustomProdutos(categoria, 11);
+                    break;
+                case 11:
+                    CarregarImgCustomProdutos(categoria, 12);
+                    break;
+                case 12:
+                    CarregarImgCustomProdutos(categoria, 13);
+                    break;
+                case 13:
+                    CarregarImgCustomProdutos(categoria, 14);
+                    break;
+                case 14:
+                    CarregarImgCustomProdutos(categoria, 15);
+                    break;
+                case 15:
+                    CarregarImgCustomProdutos(categoria, 16);
+                    break;
+                case 16:
+                    CarregarImgCustomProdutos(categoria, 17);
+                    break;
+                case 17:
+                    CarregarImgCustomProdutos(categoria, 18);
+                    break;
+                case 18:
+                    CarregarImgCustomProdutos(categoria, 19);
+                    break;
+                case 19:
+                    CarregarImgCustomProdutos(categoria, 20);
+                    break;
+                case 20:
+                    CarregarImgCustomProdutos(categoria, 21);
+                    break;
+                case 21:
+                    CarregarImgCustomProdutos(categoria, 22);
+                    break;
+                case 22:
+                    CarregarImgCustomProdutos(categoria, 23);
+                    break;
+                case 23:
+                    CarregarImgCustomProdutos(categoria, 24);
+                    break;
+            }
+            #endregion
+        }
+
+        private void toolStripComboBoxTrocarCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            #region switch produto
+            switch (toolStripComboBoxTrocarCategoria.SelectedIndex)
+            {
+                case 0:
+                    CarregarImgCustomCategoria(1);
+                    break;
+                case 1:
+                    CarregarImgCustomCategoria(2);
+                    break;
+                case 2:
+                    CarregarImgCustomCategoria(3);
+                    break;
+                case 3:
+                    CarregarImgCustomCategoria(4);
+                    break;
+                case 4:
+                    CarregarImgCustomCategoria(5);
+                    break;
+                case 5:
+                    CarregarImgCustomCategoria(6);
+                    break;
+                case 6:
+                    CarregarImgCustomCategoria(7);
+                    break;
+                case 7:
+                    CarregarImgCustomCategoria(8);
+                    break;
+                case 8:
+                    CarregarImgCustomCategoria(9);
+                    break;
+                    #endregion
+            }
+        }
+
+        private void alterarCódigoDeBarrasDoProdutoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CarregarFrmAlterarProdutos();
+        }
+
 
         #endregion
 
@@ -1860,6 +2095,7 @@ namespace Sistema_Bar
         {
             soma -= double.Parse(dataGridProdutos.Rows[posicaotabela].Cells[4].Value.ToString());
             labelValorTotal.Text = soma.ToString();
+            QuantProdutos = dataGridProdutos.Rows.Count;
         }
 
         private void dataGridProdutos_SelectionChanged_1(object sender, EventArgs e)
@@ -1995,206 +2231,36 @@ namespace Sistema_Bar
 
 
 
-        private void toolStripComboBoxCategoria_SelectedIndexChanged(object sender, EventArgs e)
+ 
+
+        private void sairEFecharCaixaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            #region Switch categoria
-            switch (toolStripComboBoxCategoria.SelectedIndex)
-            {
-                case 0:
-                    categoria = 1;
-                    toolStripComboBoxProduto.Enabled = true;
-                    toolStripComboBoxProduto.Items.Clear();
-                    for (int i = 1; i <= 24; i++)
-                    {
-                        toolStripComboBoxProduto.Items.Add(ini1.IniReadString("Nome dos Produtos da Categoria 1", "Nome do Produto " + i, ""));
-                    }
-                    break;
-                case 1:
-                    categoria = 2;
-                    toolStripComboBoxProduto.Enabled = true;
-                    toolStripComboBoxProduto.Items.Clear();
-                    for (int i = 1; i <= 24; i++)
-                    {
-                        toolStripComboBoxProduto.Items.Add(ini1.IniReadString("Nome dos Produtos da Categoria 2", "Nome do Produto " + i, ""));
-                    }
-                    break;
-                case 2:
-                    categoria = 3;
-                    toolStripComboBoxProduto.Enabled = true;
-                    toolStripComboBoxProduto.Items.Clear();
-                    for (int i = 1; i <= 24; i++)
-                    {
-                        toolStripComboBoxProduto.Items.Add(ini1.IniReadString("Nome dos Produtos da Categoria 3", "Nome do Produto " + i, ""));
-                    }
-                    break;
-                case 3:
-                    categoria = 4;
-                    toolStripComboBoxProduto.Enabled = true;
-                    toolStripComboBoxProduto.Items.Clear();
-                    for (int i = 1; i <= 24; i++)
-                    {
-                        toolStripComboBoxProduto.Items.Add(ini1.IniReadString("Nome dos Produtos da Categoria 4", "Nome do Produto " + i, ""));
-                    }
-                    break;
-                case 4:
-                    categoria = 5;
-                    toolStripComboBoxProduto.Enabled = true;
-                    toolStripComboBoxProduto.Items.Clear();
-                    for (int i = 1; i <= 24; i++)
-                    {
-                        toolStripComboBoxProduto.Items.Add(ini1.IniReadString("Nome dos Produtos da Categoria 5", "Nome do Produto " + i, ""));
-                    }
-                    break;
-                case 5:
-                    categoria = 6;
-                    toolStripComboBoxProduto.Enabled = true;
-                    toolStripComboBoxProduto.Items.Clear();
-                    for (int i = 1; i <= 24; i++)
-                    {
-                        toolStripComboBoxProduto.Items.Add(ini1.IniReadString("Nome dos Produtos da Categoria 6", "Nome do Produto " + i, ""));
-                    }
-                    break;
-                case 6:
-                    categoria = 7;
-                    toolStripComboBoxProduto.Enabled = true;
-                    toolStripComboBoxProduto.Items.Clear();
-                    for (int i = 1; i <= 24; i++)
-                    {
-                        toolStripComboBoxProduto.Items.Add(ini1.IniReadString("Nome dos Produtos da Categoria 7", "Nome do Produto " + i, ""));
-                    }
-                    break;
-                case 7:
-                    categoria = 8;
-                    toolStripComboBoxProduto.Enabled = true;
-                    toolStripComboBoxProduto.Items.Clear();
-                    for (int i = 1; i <= 24; i++)
-                    {
-                        toolStripComboBoxProduto.Items.Add(ini1.IniReadString("Nome dos Produtos da Categoria 8", "Nome do Produto " + i, ""));
-                    }
-                    break;
-            }
-            #endregion
+            PrintDocument printDoc = new PrintDocument();
+
+            printDoc.Print();
+         
         }
 
-        private void toolStripComboBoxProduto_SelectedIndexChanged(object sender, EventArgs e)
+        private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
         {
-            #region switch produto
-            switch (toolStripComboBoxProduto.SelectedIndex)
-            {
-                case 0:
-                    CarregarImgCustomProdutos(categoria, 1);                   
-                    break;
-                case 1:
-                    CarregarImgCustomProdutos(categoria, 2);
-
-                    break;
-                case 2:
-                    CarregarImgCustomProdutos(categoria, 3);
-                    break;
-                case 3:
-                    CarregarImgCustomProdutos(categoria, 4);
-                    break;
-                case 4:
-                    CarregarImgCustomProdutos(categoria, 5);
-                    break;
-                case 5:
-                    CarregarImgCustomProdutos(categoria, 6);
-                    break;
-                case 6:
-                    CarregarImgCustomProdutos(categoria, 7);
-                    break;
-                case 7:
-                    CarregarImgCustomProdutos(categoria, 8);
-                    break;
-                case 8:
-                    CarregarImgCustomProdutos(categoria, 9);
-                    break;
-                case 9:
-                    CarregarImgCustomProdutos(categoria, 10);
-                    break;
-                case 10:
-                    CarregarImgCustomProdutos(categoria, 11);
-                    break;
-                case 11:
-                    CarregarImgCustomProdutos(categoria, 12);
-                    break;
-                case 12:
-                    CarregarImgCustomProdutos(categoria, 13);
-                    break;
-                case 13:
-                    CarregarImgCustomProdutos(categoria, 14);
-                    break;
-                case 14:
-                    CarregarImgCustomProdutos(categoria, 15);
-                    break;
-                case 15:
-                    CarregarImgCustomProdutos(categoria, 16);
-                    break;
-                case 16:
-                    CarregarImgCustomProdutos(categoria, 17);
-                    break;
-                case 17:
-                    CarregarImgCustomProdutos(categoria, 18);
-                    break;
-                case 18:
-                    CarregarImgCustomProdutos(categoria, 19);
-                    break;
-                case 19:
-                    CarregarImgCustomProdutos(categoria, 20);
-                    break;
-                case 20:
-                    CarregarImgCustomProdutos(categoria, 21);
-                    break;
-                case 21:
-                    CarregarImgCustomProdutos(categoria, 22);
-                    break;
-                case 22:
-                    CarregarImgCustomProdutos(categoria, 23);
-                    break;
-                case 23:
-                    CarregarImgCustomProdutos(categoria, 24);
-                    break;
-            }
-            #endregion
-        }
-
-        private void toolStripComboBoxTrocarCategoria_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            #region switch produto
-            switch (toolStripComboBoxTrocarCategoria.SelectedIndex)
-            {
-                case 0:
-                    CarregarImgCustomCategoria(1);
-                    break;
-                case 1:
-                    CarregarImgCustomCategoria(2);
-                    break;
-                case 2:
-                    CarregarImgCustomCategoria(3);
-                    break;
-                case 3:
-                    CarregarImgCustomCategoria(4);
-                    break;
-                case 4:
-                    CarregarImgCustomCategoria(5);
-                    break;
-                case 5:
-                    CarregarImgCustomCategoria(6);
-                    break;
-                case 6:
-                    CarregarImgCustomCategoria(7);
-                    break;
-                case 7:
-                    CarregarImgCustomCategoria(8);
-                    break;
-                case 8:
-                    CarregarImgCustomCategoria(9);
-                    break;
-                    #endregion
-            }
+            
         }
     }
-}   
+}
+
+
+/* for (int i = 0; i <= (QuantProdutos - 1); i++)
+{
+    for (int y = 0; y <= 4; y++)
+    {
+        teste += dataGridProdutos.Rows[i].Cells[y].Value.ToString() + "  //  ";
+    }
+
+    teste += "\n";
+
+} 
+
+MessageBox.Show(teste); */
 
 /* picBoxOpcao1.BackColor = Color.Transparent;
  picBoxOpcao1.BackColor = Color.DarkGray; */

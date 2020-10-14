@@ -166,6 +166,7 @@
             this.carregarOuSalvarArquivoIniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.carregarIconePersonalizadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.categoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripComboBoxTrocarCategoria = new System.Windows.Forms.ToolStripComboBox();
             this.produtosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComboBoxCategoria = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripComboBoxProduto = new System.Windows.Forms.ToolStripComboBox();
@@ -174,11 +175,10 @@
             this.salvarListaDeItensToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alterarCódigoDeBarrasDoProdutoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alterarIconeDosProdutosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.alterarListaDeItensToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairEFecharCaixaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.atualizarArqIniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.produtosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.toolStripComboBoxTrocarCategoria = new System.Windows.Forms.ToolStripComboBox();
             this.panelDireito.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCancelarCompra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFinalizarCompra)).BeginInit();
@@ -1922,8 +1922,15 @@
             this.categoriasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripComboBoxTrocarCategoria});
             this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
-            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.categoriasToolStripMenuItem.Text = "Categorias";
+            // 
+            // toolStripComboBoxTrocarCategoria
+            // 
+            this.toolStripComboBoxTrocarCategoria.Name = "toolStripComboBoxTrocarCategoria";
+            this.toolStripComboBoxTrocarCategoria.Size = new System.Drawing.Size(121, 23);
+            this.toolStripComboBoxTrocarCategoria.Text = "----------------------";
+            this.toolStripComboBoxTrocarCategoria.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBoxTrocarCategoria_SelectedIndexChanged);
             // 
             // produtosToolStripMenuItem
             // 
@@ -1931,7 +1938,7 @@
             this.toolStripComboBoxCategoria,
             this.toolStripComboBoxProduto});
             this.produtosToolStripMenuItem.Name = "produtosToolStripMenuItem";
-            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.produtosToolStripMenuItem.Text = "Produtos";
             // 
             // toolStripComboBoxCategoria
@@ -1966,8 +1973,7 @@
             // 
             this.salvarListaDeItensToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.alterarCódigoDeBarrasDoProdutoToolStripMenuItem,
-            this.alterarIconeDosProdutosToolStripMenuItem,
-            this.alterarListaDeItensToolStripMenuItem});
+            this.alterarIconeDosProdutosToolStripMenuItem});
             this.salvarListaDeItensToolStripMenuItem.Name = "salvarListaDeItensToolStripMenuItem";
             this.salvarListaDeItensToolStripMenuItem.Size = new System.Drawing.Size(67, 24);
             this.salvarListaDeItensToolStripMenuItem.Text = "Produtos";
@@ -1975,27 +1981,23 @@
             // alterarCódigoDeBarrasDoProdutoToolStripMenuItem
             // 
             this.alterarCódigoDeBarrasDoProdutoToolStripMenuItem.Name = "alterarCódigoDeBarrasDoProdutoToolStripMenuItem";
-            this.alterarCódigoDeBarrasDoProdutoToolStripMenuItem.Size = new System.Drawing.Size(265, 22);
-            this.alterarCódigoDeBarrasDoProdutoToolStripMenuItem.Text = "Alterar Código de Barras do Produto";
+            this.alterarCódigoDeBarrasDoProdutoToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
+            this.alterarCódigoDeBarrasDoProdutoToolStripMenuItem.Text = "Alterar Código de Barras  e Preço dos Produtos";
+            this.alterarCódigoDeBarrasDoProdutoToolStripMenuItem.Click += new System.EventHandler(this.alterarCódigoDeBarrasDoProdutoToolStripMenuItem_Click);
             // 
             // alterarIconeDosProdutosToolStripMenuItem
             // 
             this.alterarIconeDosProdutosToolStripMenuItem.Name = "alterarIconeDosProdutosToolStripMenuItem";
-            this.alterarIconeDosProdutosToolStripMenuItem.Size = new System.Drawing.Size(265, 22);
+            this.alterarIconeDosProdutosToolStripMenuItem.Size = new System.Drawing.Size(320, 22);
             this.alterarIconeDosProdutosToolStripMenuItem.Text = "Alterar Icone e Nome dos Produtos";
             this.alterarIconeDosProdutosToolStripMenuItem.Click += new System.EventHandler(this.alterarIconeDosProdutosToolStripMenuItem_Click);
-            // 
-            // alterarListaDeItensToolStripMenuItem
-            // 
-            this.alterarListaDeItensToolStripMenuItem.Name = "alterarListaDeItensToolStripMenuItem";
-            this.alterarListaDeItensToolStripMenuItem.Size = new System.Drawing.Size(265, 22);
-            this.alterarListaDeItensToolStripMenuItem.Text = "Alterar Preço Produto";
             // 
             // sairEFecharCaixaToolStripMenuItem
             // 
             this.sairEFecharCaixaToolStripMenuItem.Name = "sairEFecharCaixaToolStripMenuItem";
             this.sairEFecharCaixaToolStripMenuItem.Size = new System.Drawing.Size(117, 24);
             this.sairEFecharCaixaToolStripMenuItem.Text = "Sair e Fechar Caixa";
+            this.sairEFecharCaixaToolStripMenuItem.Click += new System.EventHandler(this.sairEFecharCaixaToolStripMenuItem_Click);
             // 
             // atualizarArqIniToolStripMenuItem
             // 
@@ -2004,16 +2006,13 @@
             this.atualizarArqIniToolStripMenuItem.Text = "Atualizar";
             this.atualizarArqIniToolStripMenuItem.Click += new System.EventHandler(this.atualizarArqIniToolStripMenuItem_Click);
             // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
             // produtosBindingSource
             // 
             this.produtosBindingSource.DataSource = typeof(Sistema_Bar.Produtos);
-            // 
-            // toolStripComboBoxTrocarCategoria
-            // 
-            this.toolStripComboBoxTrocarCategoria.Name = "toolStripComboBoxTrocarCategoria";
-            this.toolStripComboBoxTrocarCategoria.Size = new System.Drawing.Size(121, 23);
-            this.toolStripComboBoxTrocarCategoria.Text = "----------------------";
-            this.toolStripComboBoxTrocarCategoria.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBoxTrocarCategoria_SelectedIndexChanged);
             // 
             // PagInicial
             // 
@@ -2136,7 +2135,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem sistemaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salvarListaDeItensToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem alterarListaDeItensToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem históricoDeVendasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem alterarCódigoDeBarrasDoProdutoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sairEFecharCaixaToolStripMenuItem;
@@ -2276,6 +2274,7 @@
         private System.Windows.Forms.ToolStripComboBox toolStripComboBoxCategoria;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBoxProduto;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBoxTrocarCategoria;
+        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }
 
