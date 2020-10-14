@@ -7,3 +7,7 @@ Pequeno e simples software que estou construindo para um amigo que possui bar
 
 10/10 Adicionado um DataGRID no projeto, o qual, funciona como um carrinho de compras, todo produto inserido é calculado seu valor total(valor unitario * quantidade)
 e somado ao valor total.
+
+13/10 adicionado Menu e opçoes para alterar Código de Barras e Preço dos Produtos
+
+ 
