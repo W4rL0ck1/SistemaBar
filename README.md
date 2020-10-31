@@ -10,4 +10,6 @@ e somado ao valor total.
 
 13/10 adicionado Menu e opçoes para alterar Código de Barras e Preço dos Produtos
 
+<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6722784893622882307" height="1002" width="504" frameborder="0" allowfullscreen="" title="Publicação incorporada"></iframe>
+
  
